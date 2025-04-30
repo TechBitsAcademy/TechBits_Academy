@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindset de Croissance - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== RESET & BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ==== HEADER & NAVBAR ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background-color: #00ffcc;
+            color: #0066ff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== FORMATION HERO ==== */
+        .formation-hero {
+            background: linear-gradient(rgba(0, 102, 255, 0.8), rgba(0, 162, 255, 0.8)), url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        .formation-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .formation-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .formation-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .badge-free {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .badge-premium {
+            background: #0066ff;
+            color: white;
+        }
+        
+        .formation-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .price-free {
+            color: #00ffcc;
+        }
+        
+        .price-premium {
+            color: white;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ==== FORMATION CONTENT ==== */
+        .formation-container {
+            padding: 5rem 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .formation-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+        
+        @media (max-width: 992px) {
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .formation-main {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .formation-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-card h3 {
+            color: #0066ff;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .sidebar-card h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .formation-section {
+            margin-bottom: 3rem;
+        }
+        
+        .formation-section h2 {
+            color: #0066ff;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .formation-section h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .module-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid #00a2ff;
+        }
+        
+        .module-item h3 {
+            color: #0066ff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .module-item h3 i {
+            margin-right: 10px;
+            color: #00a2ff;
+        }
+        
+        .module-item p {
+            color: #666;
+        }
+        
+        .instructor-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .instructor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #0066ff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .instructor-info h4 {
+            color: #0066ff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructor-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* ==== FAQ SECTION ==== */
+        .faq-section {
+            background: #f1f8ff;
+            padding: 5rem 10%;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #0066ff;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-toggle.rotate {
+            transform: rotate(180deg);
+        }
+        
+        /* ==== TESTIMONIALS SECTION ==== */
+        .testimonials-section {
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        
+        .rating {
+            color: #ffcc00;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #0066ff;
+        }
+        
+        /* ==== CTA SECTION ==== */
+        .cta-section {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+        }
+        
+        .whatsapp-btn, .testimonial-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            color: white;
+            border: none;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+        }
+        
+        .testimonial-btn {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .whatsapp-btn:hover, .testimonial-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 3rem 10%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ==== RESPONSIVE DESIGN ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .formation-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .floating-btns {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="page_d'acceuil.html">Accueil</a></li>
+                <li><a href="nos_formations.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="nos_challenges.html">Nos challenges</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Formation Hero -->
+    <section class="formation-hero">
+        <!-- MODIFIER LE TYPE DE FORMATION (free/premium) -->
+        <div class="formation-badge badge-premium">Formation Premium</div>
+        <!-- <div class="formation-badge badge-free">Formation Gratuite</div> -->
+        
+        <h1>Mindset de Croissance et Développement Personnel</h1>
+        <p>Transformez votre état d'esprit pour atteindre vos objectifs personnels et professionnels.</p>
+        
+        <!-- MODIFIER LE PRIX (ou supprimer pour gratuit) -->
+        <div class="formation-price price-premium">39,99€</div>
+        <!-- <div class="formation-price price-free">Gratuit</div> -->
+        
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">
+                <i class="fas fa-download"></i> Télécharger le programme
+            </a>
+            
+        </div>
+    </section>
+
+    <!-- Formation Content -->
+    <section class="formation-container">
+        <div class="formation-grid">
+            <div class="formation-main">
+                <!-- Section Description -->
+                <div class="formation-section">
+                    <h2>Description de la formation</h2>
+                    <p>Cette formation complète vous permettra de développer un mindset de croissance, essentiel pour surmonter les obstacles et atteindre vos objectifs. Vous apprendrez à transformer vos croyances limitantes, à gérer les échecs comme des opportunités d'apprentissage et à cultiver une mentalité positive au quotidien.</p>
+                    <p>À travers 8 modules progressifs, vous découvrirez des stratégies concrètes pour développer votre résilience, votre persévérance et votre capacité à apprendre en permanence. Cette formation s'adresse à tous ceux qui souhaitent transformer leur vie personnelle et professionnelle.</p>
+                </div>
+                
+                <!-- Section Programme -->
+                <div class="formation-section">
+                    <h2>Programme de la formation</h2>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 1 : Introduction au Mindset de Croissance</h3>
+                        <p>Comprendre les différences entre mindset fixe et mindset de croissance. Découvrez les avantages d'un état d'esprit orienté vers le développement.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 2 : Les Fondements du Mindset de Croissance</h3>
+                        <p>Développer des croyances qui soutiennent la croissance. Apprendre à surmonter les pensées négatives et les auto-sabotages.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 3 : Développement Personnel et Compétences Clés</h3>
+                        <p>Identifier les compétences essentielles pour un développement continu. Renforcer son intelligence émotionnelle et sa gestion du temps.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 4 : Construire une Mentalité Positive</h3>
+                        <p>Apprendre à nourrir une mentalité positive au quotidien. Intégrer des habitudes de pensée positive dans sa vie.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 5 : Gestion du Temps et des Priorités</h3>
+                        <p>Maîtriser les principes de la gestion du temps efficace. Prioriser ses tâches pour maximiser les résultats.</p>
+                    </div>
+
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 6 : Fixer des Objectifs SMART</h3>
+                        <p>Définir des objectifs clairs et mesurables. Apprendre à planifier de manière stratégique.</p>
+                    </div>
+
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 7 : Résilience et Persévérance</h3>
+                        <p>Apprendre à rebondir après un échec. Cultiver la persévérance face aux défis.</p>
+                    </div>
+
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 8 : Vision à Long Terme et Alignement</h3>
+                        <p>Construire une vision claire pour l'avenir. Aligner les actions quotidiennes avec cette vision.</p>
+                    </div>
+                </div>
+                
+               
+            </div>
+            
+            <div class="formation-sidebar">
+                <!-- Card Inscription -->
+                <div class="sidebar-card">
+                    <h3>Accéder à la formation</h3>
+                    <p>Développez votre potentiel et transformez votre vie avec cette formation complète sur le mindset de croissance.</p>
+                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Telecharger
+                    </a>
+                </div>
+                
+                <!-- Card Détails -->
+                <div class="sidebar-card">
+                    <h3>Détails</h3>
+                    <p><strong><i class="far fa-clock"></i> Durée:</strong> 15 heures de formation</p>
+                    <p><strong><i class="fas fa-layer-group"></i> Niveau:</strong> Tous niveaux</p>
+                    <p><strong><i class="far fa-file-alt"></i> Ressources:</strong> 20 fichiers téléchargeables</p>
+                    <p><strong><i class="fas fa-certificate"></i> Certification:</strong> Incluse</p>
+                </div>
+                
+                <!-- Card Témoignages -->
+                <div class="sidebar-card">
+                    <h3>Avis des participants</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>4.9/5</span>
+                    </div>
+                    <p>"Cette formation a changé ma manière de voir les défis. Je recommande vivement!"</p>
+                    <a href="#testimonials" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Voir tous les avis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <h2 class="section-title">Questions fréquentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quand puis-je accéder à la formation après achat ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>L'accès est immédiat après paiement. Vous recevrez un email avec vos identifiants pour vous connecter à votre espace membre.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Pendant combien de temps aurai-je accès à la formation ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Vous avez un accès à vie, y compris aux mises à jour futures du contenu.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Existe-t-il une garantie satisfait ou remboursé ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, nous offrons une garantie de 30 jours. Si la formation ne vous convient pas, nous vous rembourserons intégralement.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Les exercices pratiques sont-ils inclus ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, chaque module comprend des exercices pratiques et des outils téléchargeables pour appliquer immédiatement ce que vous apprenez.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">Témoignages</h2>
+        <p>Ce que disent les participants de cette formation</p>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"Cette formation a complètement transformé ma manière d'aborder les défis. J'ai appris à voir les échecs comme des opportunités d'apprentissage."</p>
+                <p class="testimonial-author">- Claire T.</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"Les techniques enseignées sont applicables immédiatement. J'ai pu améliorer ma productivité et ma confiance en moi grâce à cette formation."</p>
+                <p class="testimonial-author">- Marc L.</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-content">"Le formatrice est exceptionnelle. Elle explique des concepts complexes de manière simple et pratique. Une formation qui change la vie!"</p>
+                <p class="testimonial-author">- Élodie P.</p>
+            </div>
+        </div>
+        
+        <a href="temoignages.html" class="btn btn-primary">
+            <i class="fas fa-comment"></i> Donner mon avis
+        </a>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Prêt à transformer votre mindset ?</h2>
+        <p>Développez votre potentiel et atteignez vos objectifs avec cette formation complète.</p>
+        <a href="#" class="btn btn-primary" style="margin-top: 1.5rem;">
+            S'inscrire maintenant
+        </a>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-btns">
+        <a href="https://wa.me/2290156410172" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="temoignages.html" class="testimonial-btn">
+            <i class="fas fa-comment"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>La plateforme de formation pour développer vos compétences personnelles et professionnelles.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="#">Développement Personnel</a></li>
+                    <li><a href="#">Productivité</a></li>
+                    <li><a href="#">Gestion du Temps</a></li>
+                    <li><a href="#">Intelligence Émotionnelle</a></li>
+                    <li><a href="#">Leadership</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ressources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="temoignages.html">Témoignages</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> tech.bits.fr@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +229 0156410172</li>
+                    <li><i class="fas fa-map-marker-alt"></i> BJ, Bénin</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('show');
+                toggle.classList.toggle('rotate');
+                
+                // Fermer les autres réponses
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer && item.classList.contains('show')) {
+                        item.classList.remove('show');
+                        item.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotate');
+                    }
+                });
+            });
+        });
+        
+        // Animation des éléments au scroll
+        const animateElements = document.querySelectorAll('.formation-section, .sidebar-card, .faq-item, .testimonial-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Local - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== RESET & BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ==== HEADER & NAVBAR ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background-color: #00ffcc;
+            color: #0066ff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== FORMATION HERO ==== */
+        .formation-hero {
+            background: linear-gradient(rgba(0, 102, 255, 0.8), rgba(0, 162, 255, 0.8)), url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        .formation-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .formation-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .formation-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .badge-premium {
+            background: #0066ff;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .formation-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .price-premium {
+            color: white;
+        }
+        
+        .price-old {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 0.5rem;
+            position: absolute;
+            top: -15px;
+            left: -60px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.05rem;
+        }
+        
+        .btn-primary {
+            background: #00ffcc;
+            color: #0066ff;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ==== FORMATION CONTENT ==== */
+        .formation-container {
+            padding: 5rem 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .formation-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+        
+        @media (max-width: 992px) {
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .formation-main {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .formation-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sidebar-card h3 {
+            color: #0066ff;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .sidebar-card h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+        
+        .formation-section {
+            margin-bottom: 3.5rem;
+        }
+        
+        .formation-section h2 {
+            color: #0066ff;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 2rem;
+        }
+        
+        .formation-section h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .module-item {
+            margin-bottom: 1.8rem;
+            padding-left: 1.8rem;
+            border-left: 3px solid #00a2ff;
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover {
+            border-left: 3px solid #00ffcc;
+        }
+        
+        .module-item h3 {
+            color: #0066ff;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .module-item h3 i {
+            margin-right: 12px;
+            color: #00a2ff;
+        }
+        
+        .module-item p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+        
+        .warning-box {
+            background: #fff8e6;
+            border-left: 4px solid #ffcc00;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        
+        .warning-box h4 {
+            color: #cc9900;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warning-box h4 i {
+            margin-right: 10px;
+        }
+        
+        /* ==== OUTILS SECTION ==== */
+        .outils-section {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .outils-section h3 {
+            color: #0066ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .outils-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .outil-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .outil-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .outil-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        
+        .outil-item h4 {
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        /* ==== FAQ SECTION ==== */
+        .faq-section {
+            background: #f1f8ff;
+            padding: 5rem 10%;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8fcff;
+        }
+        
+        .faq-answer {
+            padding: 0 1.8rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 0 1.8rem 1.8rem;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.4s ease;
+            color: #00a2ff;
+        }
+        
+        .faq-toggle.rotate {
+            transform: rotate(180deg);
+        }
+        
+        /* ==== TESTIMONIALS SECTION ==== */
+        .testimonials-section {
+            padding: 5rem 10%;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f4ff 100%);
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 3.5rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .rating {
+            color: #ffcc00;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #0066ff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+            object-fit: cover;
+        }
+        
+        /* ==== CTA SECTION ==== */
+        .cta-section {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 6rem 10%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+        }
+        
+        .whatsapp-btn, .testimonial-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            color: white;
+            border: none;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+        }
+        
+        .testimonial-btn {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .whatsapp-btn:hover, .testimonial-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 4rem 10% 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.4rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 8px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        /* ==== RESPONSIVE DESIGN ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .formation-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .formation-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .floating-btns {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .formation-main, .sidebar-card {
+                padding: 1.5rem;
+            }
+            
+            .formation-section h2 {
+                font-size: 1.7rem;
+            }
+            
+            .module-item h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="page_d'acceuil.html">Accueil</a></li>
+                <li><a href="nos_formations.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="nos_challenges.html">Nos challenges</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Formation Hero -->
+    <section class="formation-hero">
+        <div class="formation-badge badge-premium">Formation Premium</div>
+        
+        <h1>Maîtriser l'E-commerce Local</h1>
+        <p>Découvrez comment vendre en ligne avec succès dans votre région sans dépendre des importations ou des plateformes internationales</p>
+        
+        <div class="formation-price price-premium">
+            <span class="price-old">9.700 FCFA</span>
+            2.800 FCFA
+        </div>
+        
+        <div class="hero-buttons">
+            <a href="pg_methode_paiement.html" class="btn btn-primary">
+                <i class="fas fa-download"></i> Télécharger le programme
+            </a>
+        </div>
+    </section>
+
+    <!-- Formation Content -->
+    <section class="formation-container">
+        <div class="formation-grid">
+            <div class="formation-main">
+                <!-- Section Description -->
+                <div class="formation-section">
+                    <h2>Description de la formation</h2>
+                    <p>Cette formation complète vous apprendra à créer et développer un business e-commerce local rentable. Contrairement au e-commerce international, l'approche locale offre des avantages majeurs : livraison rapide, paiements simplifiés, concurrence réduite et investissement minimal.</p>
+                    <p>Vous découvrirez comment identifier les produits porteurs dans votre région, choisir les bonnes plateformes de vente, optimiser vos livraisons et fidéliser vos clients locaux.</p>
+                    
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Attention importante</h4>
+                        <p>L'e-commerce local n'est pas une solution miracle. Pour réussir, vous devrez comprendre les besoins spécifiques de votre marché local et proposer une expérience client irréprochable. Cette formation vous donnera toutes les clés pour y parvenir.</p>
+                    </div>
+                </div>
+                
+                <!-- Section Programme -->
+                <div class="formation-section">
+                    <h2>Programme de la formation</h2>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 1 : Comprendre l'e-commerce local</h3>
+                        <p>Définition, avantages et inconvénients, différences avec l'e-commerce international, exemples concrets.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 2 : Trouver le bon produit local</h3>
+                        <p>Analyse des besoins locaux, identification des niches rentables, sourcing des produits, tests de marché.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 3 : Choisir ses canaux de vente</h3>
+                        <p>WhatsApp Business, Facebook Marketplace, Instagram, TikTok, site e-commerce dédié. Avantages et configuration de chaque plateforme.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 4 : Gérer les paiements et livraisons</h3>
+                        <p>Solutions de paiement locales (Mobile Money, cash), organisation des livraisons, partenariats avec des livreurs locaux.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 5 : Marketing digital local</h3>
+                        <p>Stratégies publicitaires ciblées, création de contenu engageant, utilisation des groupes Facebook locaux, influenceurs locaux.</p>
+                    </div>
+
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 6 : Fidélisation et croissance</h3>
+                        <p>Programmes de fidélité, service client personnalisé, gestion des retours, stratégies de bouche-à-oreille.</p>
+                    </div>
+                </div>
+                
+                <!-- Section Outils -->
+                <div class="outils-section">
+                    <h3>Outils utilisés dans cette formation</h3>
+                    <div class="outils-grid">
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2048px-WhatsApp.svg.png" alt="WhatsApp Business">
+                            <h4>WhatsApp Business</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                            <h4>Facebook Marketplace</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+            <div class="formation-sidebar">
+                <!-- Card Inscription -->
+                <div class="sidebar-card">
+                    <h3>Accéder à la formation</h3>
+                    <p>Démarrez votre business e-commerce local dès aujourd'hui avec notre méthode éprouvée.</p>
+                    <a href="pg_methode_paiement" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Démarrez maintenant
+                    </a>
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-shield-alt"></i> Garantie 30 jours satisfait ou remboursé
+                    </p>
+                </div>
+                
+                <!-- Card Détails -->
+                <div class="sidebar-card">
+                    <h3>Détails</h3>
+                    <p><strong><i class="fas fa-layer-group"></i> Niveau:</strong> Débutant</p>
+                    <p><strong><i class="far fa-file-alt"></i> Ressources:</strong> Fichiers téléchargeables</p>
+                    <p><strong><i class="fas fa-infinity"></i> Accès:</strong> À vie</p>
+                </div>
+                
+                <!-- Card Témoignages -->
+                <div class="sidebar-card">
+                    <h3>Avis des participants</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>4.9/5 (215 avis)</span>
+                    </div>
+                    <p>"Grâce à cette formation, j'ai lancé mon business de vente d'accessoires et je réalise déjà 1500€/mois en 3 mois seulement !"</p>
+                    <a href="#testimonials" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Voir tous les avis
+                    </a>
+                </div>
+
+                <!-- Card Bonus -->
+                <div class="sidebar-card" style="border: 2px solid #00ffcc;">
+                    <h3><i class="fas fa-gift"></i> Bonus Exclusifs</h3>
+                    <p><strong>Liste</strong> des produits locaux les plus rentables</p>
+                    <p><strong>Modèles</strong> de messages pour WhatsApp Business</p>
+                    <p><strong>Guide PDF</strong> des tarifs de livraison locaux</p>
+                    <p><strong>Accès</strong> à notre réseau de fournisseurs locaux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <h2 class="section-title">Questions fréquentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Ai-je besoin d'un gros budget pour me lancer ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Non! L'un des avantages majeurs de l'e-commerce local est qu'il nécessite très peu d'investissement initial. Vous pouvez commencer avec quelques produits tests et augmenter progressivement votre stock en fonction de la demande.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quelle plateforme est la meilleure pour commencer ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Cela dépend de votre public cible. WhatsApp Business est idéal pour un contact direct, Facebook Marketplace offre une grande visibilité, tandis qu'un site e-commerce donne plus de professionnalisme. Nous vous aiderons à choisir la meilleure option dans la formation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment gérer les livraisons efficacement ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Nous vous montrerons plusieurs méthodes : livraison en main propre, partenariat avec des coursiers locaux, points de retrait dans des commerces partenaires. Vous apprendrez aussi à optimiser vos tournées de livraison pour réduire les coûts.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je vendre des services en e-commerce local ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolument! Les services locaux (coiffure à domicile, réparation, cours particuliers...) marchent très bien en e-commerce local. Nous consacrons un module bonus à cette approche spécifique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">Ils ont réussi avec l'e-commerce local</h2>
+        <p>Témoignages de nos élèves entrepreneurs</p>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"J'ai commencé avec 200€ de capital. En 4 mois, je vends maintenant 50 paires de chaussures par semaine avec une livraison en 24h dans ma ville. Cette formation m'a tout appris !"</p>
+                <div class="testimonial-author">
+                    <span>Fatou D., Entrepreneuse</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"Grâce aux techniques de WhatsApp Business enseignées, j'ai triplé mes ventes de produits cosmétiques en 2 mois sans dépenser en publicité. Le bouche-à-oreille fonctionne incroyablement bien !"</p>
+                <div class="testimonial-author">
+                    <span>Amina K., Vendeuse</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-content">"Le module sur les livraisons m'a fait économiser 40% sur mes frais logistiques. Je livre maintenant plus rapidement et mes clients sont ravis. Merci pour ces conseils pratiques !"</p>
+                <div class="testimonial-author">
+                    <span>Jean T., Commerçant</span>
+                </div>
+            </div>
+        </div>
+        
+        <a href="temoignages.html" class="btn btn-primary">
+            <i class="fas fa-comment"></i> Donner mon avis
+        </a>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à lancer votre e-commerce local ?</h2>
+            <p>Démarrez dès aujourd'hui votre business en ligne avec des méthodes adaptées à votre marché local et des résultats rapides.</p>
+            <a href="pg_methode_paiement.html" class="btn btn-primary" style="margin-top: 1.5rem;">
+                Commencer maintenant
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-btns">
+        <a href="https://wa.me/2290156410172" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="temoignages.html" class="testimonial-btn">
+            <i class="fas fa-comment"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>La plateforme de formation pour maximiser ses revenus sur les réseaux sociaux.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="pg_eco_local.html">E-commerce Local</a></li>
+                    <li><a href="pg_monetise_fac.html">Monétisation Facebook</a></li>
+                    <li><a href="#">Growth TikTok</a></li>
+                    <li><a href="#">Création de Contenu</a></li>
+                    <li><a href="#">Automatisation Social Media</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ressources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="temoignages.html">Témoignages</a></li>
+                    <li><a href="contact.html">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> tech.bits.fr@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +229 0156410172</li>
+                    <li><i class="fas fa-map-marker-alt"></i> BJ, Bénin</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('show');
+                toggle.classList.toggle('rotate');
+                
+                // Fermer les autres réponses
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer && item.classList.contains('show')) {
+                        item.classList.remove('show');
+                        item.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotate');
+                    }
+                });
+            });
+        });
+        
+        // Animation des éléments au scroll
+        const animateElements = document.querySelectorAll('.formation-section, .sidebar-card, .faq-item, .testimonial-card, .module-item, .outil-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

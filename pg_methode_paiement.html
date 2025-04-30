@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ==== HEADER STYLES ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== PAYMENT MAIN CONTENT ==== */
+        .payment-hero {
+            background: linear-gradient(rgba(0, 102, 255, 0.8), rgba(0, 162, 255, 0.8)), 
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 4rem 10%;
+            text-align: center;
+        }
+        
+        .payment-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .payment-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        
+        .payment-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #0066ff;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .method-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.2);
+        }
+        
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .method-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .method-card h3 {
+            color: #0066ff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pay-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .pay-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        .whatsapp-payment {
+            background: #f1f8ff;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .whatsapp-payment h3 {
+            color: #0066ff;
+            margin-bottom: 1rem;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #25D366;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+        }
+        
+        .whatsapp-float, .dev-float {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float {
+            background: #25D366;
+        }
+        
+        .dev-float {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+        }
+        
+        .floating-btns a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 3rem 10%;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ==== RESPONSIVE ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .payment-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-btns {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-float, .dev-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="page_d'acceuil.html">Accueil</a></li>
+                <li><a href="nos_formations.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+               <li><a href="contact.html">Contact</a></li>
+                <li><a href="nos_challenges.html">Nos challenges</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="payment-hero">
+        <h1>Vous êtes à un pas de votre transformation</h1>
+        <h2>Finalisez votre achat</h2>
+        <p>Choisissez votre méthode de paiement préférée</p>
+    </section>
+
+    <!-- Payment Methods -->
+    <main class="payment-container">
+        <!-- Cryptocurrencies -->
+        <section class="payment-section">
+            <h2 class="section-title">Paiement en Cryptomonnaies</h2>
+            <div class="method-grid">
+                <div class="method-card">
+                    <div class="method-icon">
+                    
+                    </div>
+                    <h3>USDT (TRC20), Ethereum, Solana, BNB</h3>
+                    <p>Rapide et économique</p>
+                    <a href="paiement_avec_crypto.html" class="pay-btn">Payer en Cryptomonnaies</a>
+                </div>
+                
+               
+            </div>
+        </section>
+        
+        <!-- Mobile Money -->
+        <section class="payment-section">
+            <h2 class="section-title">Mobile Money</h2>
+            <div class="method-grid">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <img src="image/mtn.png" alt="MTN">
+                    </div>
+                    <h3>MTN Mobile Money</h3>
+                    <p>Disponible dans toute l'Afrique</p>
+                    <a href="https://votre-lien-paiement.com/mtn" class="pay-btn">Payer avec MTN</a>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <img src="image/moov.png" alt="Moov">
+                    </div>
+                    <h3>Moov Money</h3>
+                    <p>Solution rapide et sécurisée</p>
+                    <a href="https://votre-lien-paiement.com/moov" class="pay-btn">Payer avec Moov</a>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <img src="image/Airtel money.png" alt="Airtel">
+                    </div>
+                    <h3>Airtel Money</h3>
+                    <p>Paiement instantané</p>
+                    <a href="https://votre-lien-paiement.com/airtel" class="pay-btn">Payer avec Airtel</a>
+                </div>
+
+                <div class="method-card">
+                    <h3>Autres Réseaux Mobile</h3>
+                    <p>Paiement instantané</p>
+                    <a href="https://votre-lien-paiement.com/airtel" class="pay-btn">Voir les moyens Disponible</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Cartes Bancaires -->
+        <section class="payment-section">
+            <h2 class="section-title">Cartes Bancaires</h2>
+            <div class="method-grid">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1200px-Visa_Inc._logo.svg.png" alt="Visa">
+                    </div>
+                    <h3>Visa</h3>
+                    <p>Carte de crédit/débit</p>
+                    <a href="#" class="pay-btn">Payer avec Visa</a>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png" alt="Mastercard">
+                    </div>
+                    <h3>Mastercard</h3>
+                    <p>Acceptée mondialement</p>
+                    <a href="#" class="pay-btn">Payer avec Mastercard</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- WhatsApp Alternative -->
+        <div class="whatsapp-payment">
+            <h3>Autre méthode de paiement ?</h3>
+            <p>Si vous ne trouvez pas votre méthode préférée, nous pouvons vous envoyer un lien de paiement personnalisé via WhatsApp</p>
+            <a href="https://wa.me/2290156410172?text=Bonjour,%20je%20souhaite%20payer%20la%20formation%20TechBits%20Academy" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Payer via WhatsApp
+            </a>
+        </div>
+    </main>
+
+    <!-- Floating Buttons -->
+    <div class="floating-btns">
+        <a href="https://wa.me/2290156410172" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:devtechbits@gmail.com?subject=Support%20Technique" class="dev-float">
+            <i class="fas fa-code"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>Formations professionnelles en business en ligne</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="#">Masterclass IA</a></li>
+                    <li><a href="pg_eco_local.html">E-commerce</a></li>
+                    <li><a href="pg_monetise_fac.html">Monétisation</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="">FAQ Paiements</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Politique de remboursement</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

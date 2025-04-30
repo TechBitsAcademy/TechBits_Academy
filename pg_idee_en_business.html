@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer ses Idées en Business - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== RESET & BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ==== HEADER & NAVBAR ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background-color: #00ffcc;
+            color: #0066ff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== FORMATION HERO ==== */
+        .formation-hero {
+            background: linear-gradient(rgba(0, 102, 255, 0.8), rgba(0, 162, 255, 0.8)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        .formation-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .formation-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .formation-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .badge-free {
+            background: #00ffcc;
+            color: #0066ff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .formation-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .price-free {
+            color: white;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.05rem;
+        }
+        
+        .btn-primary {
+            background: #00ffcc;
+            color: #0066ff;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ==== FORMATION CONTENT ==== */
+        .formation-container {
+            padding: 5rem 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .formation-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+        
+        @media (max-width: 992px) {
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .formation-main {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .formation-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sidebar-card h3 {
+            color: #0066ff;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .sidebar-card h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+        
+        .formation-section {
+            margin-bottom: 3.5rem;
+        }
+        
+        .formation-section h2 {
+            color: #0066ff;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 2rem;
+        }
+        
+        .formation-section h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .module-item {
+            margin-bottom: 1.8rem;
+            padding-left: 1.8rem;
+            border-left: 3px solid #00a2ff;
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover {
+            border-left: 3px solid #00ffcc;
+        }
+        
+        .module-item h3 {
+            color: #0066ff;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .module-item h3 i {
+            margin-right: 12px;
+            color: #00a2ff;
+        }
+        
+        .module-item p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+        
+        .warning-box {
+            background: #fff8e6;
+            border-left: 4px solid #ffcc00;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        
+        .warning-box h4 {
+            color: #cc9900;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warning-box h4 i {
+            margin-right: 10px;
+        }
+        
+        /* ==== OUTILS SECTION ==== */
+        .outils-section {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .outils-section h3 {
+            color: #0066ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .outils-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .outil-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .outil-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .outil-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        
+        .outil-item h4 {
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        /* ==== FAQ SECTION ==== */
+        .faq-section {
+            background: #f1f8ff;
+            padding: 5rem 10%;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8fcff;
+        }
+        
+        .faq-answer {
+            padding: 0 1.8rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 0 1.8rem 1.8rem;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.4s ease;
+            color: #00a2ff;
+        }
+        
+        .faq-toggle.rotate {
+            transform: rotate(180deg);
+        }
+        
+        /* ==== TESTIMONIALS SECTION ==== */
+        .testimonials-section {
+            padding: 5rem 10%;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f4ff 100%);
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 3.5rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .rating {
+            color: #ffcc00;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #0066ff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+            object-fit: cover;
+        }
+        
+        /* ==== CTA SECTION ==== */
+        .cta-section {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 6rem 10%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+        }
+        
+        .whatsapp-btn, .testimonial-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            color: white;
+            border: none;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+        }
+        
+        .testimonial-btn {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .whatsapp-btn:hover, .testimonial-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 4rem 10% 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.4rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 8px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        /* ==== RESPONSIVE DESIGN ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .formation-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .formation-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .floating-btns {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .formation-main, .sidebar-card {
+                padding: 1.5rem;
+            }
+            
+            .formation-section h2 {
+                font-size: 1.7rem;
+            }
+            
+            .module-item h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="ressources.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="nos_challenges.html">Nos Challenges</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Formation Hero -->
+    <section class="formation-hero">
+        <div class="formation-badge badge-free">Formation Gratuite</div>
+        
+        <h1>Transformer ses Idées en Business</h1>
+        <p>Découvrez comment concrétiser n'importe quelle idée en business rentable, même sans expérience ni gros budget</p>
+        
+        <div class="formation-price price-free">
+            GRATUIT
+        </div>
+        
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">
+                <i class="fas fa-download"></i> Télécharger le guide
+            </a>
+            
+        </div>
+    </section>
+
+    <!-- Formation Content -->
+    <section class="formation-container">
+        <div class="formation-grid">
+            <div class="formation-main">
+                <!-- Section Description -->
+                <div class="formation-section">
+                    <h2>Description de la formation</h2>
+                    <p>Cette formation gratuite vous révèle la méthode simple pour transformer n'importe quelle idée en business concret. Que vous vouliez vendre des produits, offrir des services ou créer une activité locale, ce guide vous montrera comment démarrer avec ce que vous avez, là où vous êtes.</p>
+                    <p>Contrairement aux formations compliquées qui demandent des investissements importants, nous vous enseignons une approche pragmatique et accessible à tous, même avec un budget limité.</p>
+                    
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Attention importante</h4>
+                        <p>Votre idée seule ne suffit pas. Le secret réside dans l'action. Cette formation vous donnera le plan concret pour passer de l'idée à la réalisation, mais c'est à vous de jouer !</p>
+                    </div>
+                </div>
+                
+                <!-- Section Programme -->
+                <div class="formation-section">
+                    <h2>Programme de la formation</h2>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 1 : L'idée n'est rien sans action</h3>
+                        <p>Les 3 types d'idées (passion, opportunité, talent), pourquoi la plupart des gens ne passent jamais à l'action, comment éviter ce piège.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 2 : La méthode KOS pour valider son idée</h3>
+                        <p>Kiff - Opportunité - Simplicité : le test ultime pour savoir si votre idée vaut la peine d'être poursuivie.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 3 : Démarrer avec ce qu'on a</h3>
+                        <p>Exemples concrets pour commencer petit : élevage, services, vente, salle de jeux... sans local ni gros investissement.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 4 : Plan d'action "Express 7 jours"</h3>
+                        <p>La méthode étape par étape pour passer de l'idée au premier revenu en une semaine seulement.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 5 : Les 5 erreurs à éviter</h3>
+                        <p>Les pièges classiques des débutants et comment les contourner pour ne pas perdre temps et énergie.</p>
+                    </div>
+
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 6 : Carnet d'idées & d'actions</h3>
+                        <p>Exercices pratiques pour choisir la meilleure idée et créer votre plan d'action personnalisé.</p>
+                    </div>
+                </div>
+                
+                <!-- Section Outils -->
+                <div class="outils-section">
+                    <h3>Outils recommandés</h3>
+                    <div class="outils-grid">
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2048px-WhatsApp.svg.png" alt="WhatsApp">
+                            <h4>WhatsApp Business</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                            <h4>Facebook Marketplace</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913109.png" alt="Carnet">
+                            <h4>Carnet d'idées</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2936/2936886.png" alt="Calculatrice">
+                            <h4>Calculatrice de budget</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+            <div class="formation-sidebar">
+                <!-- Card Inscription -->
+                <div class="sidebar-card">
+                    <h3>Accéder à la formation</h3>
+                    <p>Recevez immédiatement ce guide complet pour transformer vos idées en business concrets.</p>
+                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Télécharger gratuitement
+                    </a>
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-shield-alt"></i> Aucun paiement requis
+                    </p>
+                </div>
+                
+                <!-- Card Détails -->
+                <div class="sidebar-card">
+                    <h3>Détails</h3>
+                    <p><strong><i class="fas fa-layer-group"></i> Niveau:</strong> Débutant</p>
+                    <p><strong><i class="far fa-file-alt"></i> Ressources:</strong> Fichiers téléchargeables</p>
+                    <p><strong><i class="fas fa-certificate"></i> Certification:</strong> Optionnelle (12€/7.200 FCFA)</p>
+                    <p><strong><i class="fas fa-infinity"></i> Accès:</strong> Immédiat et illimité</p>
+                </div>
+                
+                <!-- Card Témoignages -->
+                <div class="sidebar-card">
+                    <h3>Avis des participants</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.6/5 (387 avis)</span>
+                    </div>
+                    <p>"Cette formation m'a donné le déclic pour lancer mon élevage de poulets. En 3 mois, j'ai déjà 50 clients réguliers !"</p>
+                    <a href="#testimonials" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Voir tous les avis
+                    </a>
+                </div>
+
+                <!-- Card Bonus -->
+                <div class="sidebar-card" style="border: 2px solid #00ffcc;">
+                    <h3><i class="fas fa-gift"></i> Bonus Exclusifs</h3>
+                    <p><strong>Template</strong> de plan d'action 7 jours</p>
+                    <p><strong>Liste</strong> de 50 idées de business testées</p>
+                    <p><strong>Guide PDF</strong> des premiers pas</p>
+                    <p><strong>Accès</strong> au groupe d'entraide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <h2 class="section-title">Questions fréquentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Cette formation est-elle vraiment gratuite ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, cette formation est 100% gratuite. Nous croyons que tout le monde devrait avoir accès aux connaissances de base pour démarrer un business. Vous pouvez télécharger l'ensemble du guide sans aucun paiement.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment savoir si mon idée est bonne ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Notre méthode KOS (Kiff - Opportunité - Simplicité) vous permettra d'évaluer objectivement votre idée. Si elle passe ces 3 critères, vous pouvez y aller ! Sinon, nous vous montrons comment l'améliorer ou en choisir une autre.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Que faire si je n'ai pas d'argent pour démarrer ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>La plupart de nos élèves ont commencé avec très peu (moins de 70 000 FCFA). Nous vous montrons des méthodes pour démarrer petit (ex: 2 poulets au lieu de 100, 1 service offert avant de vendre, etc.) et grandir progressivement.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je suivre cette formation sans idée précise ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolument! Nous incluons une liste de 50 idées testées et des exercices pour vous aider à trouver l'idée qui vous correspond le mieux parmi vos passions, talents et opportunités locales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">Ils ont transformé leurs idées en business</h2>
+        <p>Témoignages de nos élèves entrepreneurs</p>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"J'avais l'idée de vendre des jus naturels depuis 2 ans. Grâce au plan d'action 7 jours, j'ai enfin osé me lancer. Aujourd'hui, je fournis 3 boutiques et j'ai 2 employés !"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Aïcha">
+                    <span>Aïcha K., Entrepreneuse</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"Le module sur les erreurs à éviter m'a sauvé. J'allais investir toutes mes économies dans un local. Finalement, j'ai commencé chez moi avec WhatsApp et je gagne plus que mon ancien salaire !"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohamed">
+                    <span>Mohamed D., Vendeur</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-content">"La méthode KOS m'a fait réaliser que mon idée de départ n'était pas la bonne. J'en ai choisi une autre plus adaptée et en 3 mois, j'ai atteint 300 000 FCFA de chiffre d'affaires."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Fatou">
+                    <span>Fatou S., Créatrice</span>
+                </div>
+            </div>
+        </div>
+        
+        <a href="temoignages.html" class="btn btn-primary">
+            <i class="fas fa-comment"></i> Donner mon avis
+        </a>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à concrétiser vos idées ?</h2>
+            <p>Recevez dès maintenant notre guide complet pour transformer n'importe quelle idée en business rentable, même sans expérience ni gros budget.</p>
+            <a href="#" class="btn btn-primary" style="margin-top: 1.5rem;">
+                Télécharger gratuitement
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-btns">
+        <a href="https://wa.me/2290156410172" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="temoignages.html" class="testimonial-btn">
+            <i class="fas fa-comment"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>La plateforme de formation pour maximiser ses revenus sur les réseaux sociaux.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="#">Transformer ses idées</a></li>
+                    <li><a href="pg_eco_local.html">E-commerce Local</a></li>
+                    <li><a href="pg_monetise_fac.html">Monétisation Facebook</a></li>
+                    <li><a href="#">Growth TikTok</a></li>
+                    <li><a href="#">Automatisation Social Media</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ressources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="temoignages.html">Témoignages</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> tech.bits.fr@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +229 0156410172</li>
+                    <li><i class="fas fa-map-marker-alt"></i> BJ, Bénin</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('show');
+                toggle.classList.toggle('rotate');
+                
+                // Fermer les autres réponses
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer && item.classList.contains('show')) {
+                        item.classList.remove('show');
+                        item.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotate');
+                    }
+                });
+            });
+        });
+        
+        // Animation des éléments au scroll
+        const animateElements = document.querySelectorAll('.formation-section, .sidebar-card, .faq-item, .testimonial-card, .module-item, .outil-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

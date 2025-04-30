@@ -1,0 +1,53 @@
+<!-- ==== DÉBUT DU BLOC À COPIER POUR UNE NOUVELLE FORMATION ==== -->
+<!-- 
+  data-category : 
+    - "available" = disponible maintenant
+    - "coming" = bientôt disponible
+    - "free" = gratuit
+    - "premium" = payant
+  (Vous pouvez combiner plusieurs catégories séparées par un espace)
+  
+  Pour les formations à venir, ne pas oublier de mettre le overlay "coming-soon-overlay"
+-->
+<div class="resource-card" data-category="available free"> <!-- Modifier les catégories ici -->
+    <div class="resource-badge badge-free">Gratuit</div> <!-- Modifier le badge (badge-free, badge-premium, badge-coming) -->
+    <div class="resource-image" style="background-image: url('URL_DE_L_IMAGE');"></div> <!-- Remplacer URL_DE_L_IMAGE -->
+    <div class="resource-content">
+      <h3>NOM_DE_LA_FORMATION</h3> <!-- Remplacer par le nom -->
+      <div class="resource-meta">
+        <span><i class="far fa-clock"></i> Xh de formation</span> <!-- Remplacer X par le nombre d'heures -->
+        <span><i class="far fa-user"></i> Niveau_cible</span> <!-- Remplacer (Débutant, Intermédiaire, Avancé, Tous niveaux) -->
+      </div>
+      <span class="resource-level">Niveau: Difficulté</span> <!-- Remplacer la difficulté -->
+      <p class="resource-desc">DESCRIPTION_DE_LA_FORMATION.</p> <!-- Remplacer par la description -->
+      <a href="#" class="resource-btn btn-primary">Accéder à la formation</a> <!-- Modifier btn-primary (bleu) ou btn-secondary (vert) -->
+    </div>
+  </div>
+  <!-- ==== FIN DU BLOC ==== -->
+  
+  
+  <!-- ==== EXEMPLE POUR UNE FORMATION À VENIR ==== -->
+  <div class="resource-card" data-category="coming premium"> <!-- "coming" pour à venir -->
+    <div class="resource-badge badge-coming">Bientôt disponible</div> <!-- badge-coming obligatoire -->
+    <div class="resource-image" style="background-image: url('URL_IMAGE');"></div>
+    <div class="resource-content">
+      <!-- Overlay pour les formations à venir - NE PAS MODIFIER LA STRUCTURE -->
+      <div class="coming-soon-overlay">
+        <h4>Disponible le JJ/MM/AAAA</h4> <!-- Remplacer la date -->
+        <p>Soyez notifié dès le lancement !</p>
+        <form class="notify-form">
+          <input type="email" placeholder="Votre email" required>
+          <button type="submit">M'informer</button>
+        </form>
+      </div>
+      
+      <h3>NOM_FORMATION</h3>
+      <div class="resource-meta">
+        <span><i class="far fa-clock"></i> Xh de formation</span>
+        <span><i class="far fa-user"></i> Niveau_cible</span>
+      </div>
+      <span class="resource-level">Niveau: Difficulté</span>
+      <p class="resource-desc">DESCRIPTION.</p>
+      <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+    </div>
+  </div>

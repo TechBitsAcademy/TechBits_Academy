@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monétisation Facebook Sans Frontières - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== RESET & BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ==== HEADER & NAVBAR ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background-color: #00ffcc;
+            color: #0066ff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== FORMATION HERO ==== */
+        .formation-hero {
+            background: linear-gradient(rgba(0, 102, 255, 0.8), rgba(0, 162, 255, 0.8)), url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        .formation-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .formation-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .formation-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .badge-premium {
+            background: #0066ff;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .formation-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .price-premium {
+            color: white;
+        }
+        
+        .price-old {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 0.5rem;
+            position: absolute;
+            top: -15px;
+            left: -60px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.05rem;
+        }
+        
+        .btn-primary {
+            background: #00ffcc;
+            color: #0066ff;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ==== FORMATION CONTENT ==== */
+        .formation-container {
+            padding: 5rem 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .formation-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+        
+        @media (max-width: 992px) {
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .formation-main {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .formation-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sidebar-card h3 {
+            color: #0066ff;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .sidebar-card h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+        
+        .formation-section {
+            margin-bottom: 3.5rem;
+        }
+        
+        .formation-section h2 {
+            color: #0066ff;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 2rem;
+        }
+        
+        .formation-section h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .module-item {
+            margin-bottom: 1.8rem;
+            padding-left: 1.8rem;
+            border-left: 3px solid #00a2ff;
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover {
+            border-left: 3px solid #00ffcc;
+        }
+        
+        .module-item h3 {
+            color: #0066ff;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .module-item h3 i {
+            margin-right: 12px;
+            color: #00a2ff;
+        }
+        
+        .module-item p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+        
+        .warning-box {
+            background: #fff8e6;
+            border-left: 4px solid #ffcc00;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        
+        .warning-box h4 {
+            color: #cc9900;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warning-box h4 i {
+            margin-right: 10px;
+        }
+        
+        /* ==== OUTILS SECTION ==== */
+        .outils-section {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .outils-section h3 {
+            color: #0066ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .outils-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .outil-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .outil-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .outil-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        
+        .outil-item h4 {
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        /* ==== FAQ SECTION ==== */
+        .faq-section {
+            background: #f1f8ff;
+            padding: 5rem 10%;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8fcff;
+        }
+        
+        .faq-answer {
+            padding: 0 1.8rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 0 1.8rem 1.8rem;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.4s ease;
+            color: #00a2ff;
+        }
+        
+        .faq-toggle.rotate {
+            transform: rotate(180deg);
+        }
+        
+        /* ==== TESTIMONIALS SECTION ==== */
+        .testimonials-section {
+            padding: 5rem 10%;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f4ff 100%);
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 3.5rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .rating {
+            color: #ffcc00;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #0066ff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+            object-fit: cover;
+        }
+        
+        /* ==== CTA SECTION ==== */
+        .cta-section {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 6rem 10%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+        }
+        
+        .whatsapp-btn, .testimonial-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            color: white;
+            border: none;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+        }
+        
+        .testimonial-btn {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .whatsapp-btn:hover, .testimonial-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 4rem 10% 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.4rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 8px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        /* ==== RESPONSIVE DESIGN ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .formation-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .formation-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .floating-btns {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .formation-main, .sidebar-card {
+                padding: 1.5rem;
+            }
+            
+            .formation-section h2 {
+                font-size: 1.7rem;
+            }
+            
+            .module-item h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="ressources.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Formation Hero -->
+    <section class="formation-hero">
+        <div class="formation-badge badge-premium">Formation Premium</div>
+        
+        <h1>Monétisation Facebook Sans Frontières</h1>
+        <p>Débloquez les revenus Facebook même si votre pays n'est pas éligible grâce à notre méthode fiable et indétectable</p>
+        
+        <div class="formation-price price-premium">
+            <span class="price-old">12.800 FCFA</span>
+            3.400 FCFA
+        </div>
+        
+        <div class="hero-buttons">
+            <a href="pg_methode_paiement.html" class="btn btn-primary">
+                <i class="fas fa-download"></i> Télécharger le programme
+            </a>
+           
+        </div>
+    </section>
+
+    <!-- Formation Content -->
+    <section class="formation-container">
+        <div class="formation-grid">
+            <div class="formation-main">
+                <!-- Section Description -->
+                <div class="formation-section">
+                    <h2>Description de la formation</h2>
+                    <p>Cette formation exclusive vous révèle comment contourner les restrictions géographiques de Facebook pour accéder aux programmes de monétisation (Reels, Stars, Abonnements) même si votre pays n'est pas officiellement éligible.</p>
+                    <p>Contrairement aux méthodes risquées utilisant des VPN basiques, nous vous enseignons une technique professionnelle avec <strong>Gologin</strong> qui masque votre localisation réelle tout en restant indétectable par les algorithmes de Facebook.</p>
+                    
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Attention importante</h4>
+                        <p>Cette formation ne garantit pas l'approbation automatique par Facebook. Vous devez d'abord remplir tous les critères de monétisation (audience, contenu original, etc.). La méthode enseignée permet seulement de contourner la restriction géographique une fois que vous êtes éligible sur le plan du contenu.</p>
+                    </div>
+                </div>
+                
+                <!-- Section Programme -->
+                <div class="formation-section">
+                    <h2>Programme de la formation</h2>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 1 : Comprendre les restrictions Facebook</h3>
+                        <p>Pourquoi certains pays sont exclus ? Comment Facebook détecte votre localisation ? Les risques des méthodes classiques (VPN).</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 2 : Configurer Gologin (étape par étape)</h3>
+                        <p>Installation, création de profil, choix du pays cible (USA, France...), paramétrage des proxies et options avancées.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 3 : Optimiser Orbita Browser</h3>
+                        <p>Désactiver WebRTC/géolocalisation, tester son IP, maintenir une identité numérique crédible.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 4 : Connecter son compte Facebook</h3>
+                        <p>Bonnes pratiques pour éviter les flags, timing idéal, gestion des cookies et cache.</p>
+                    </div>
+                    
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 5 : Maintenir son anonymat</h3>
+                        <p>Erreurs à éviter, mises à jour à appliquer, solutions aux problèmes courants.</p>
+                    </div>
+
+                    <div class="module-item">
+                        <h3><i class="fas fa-play-circle"></i> Module 6 : Maximiser ses revenus</h3>
+                        <p>Combiner Stars, Reels et Abonnements. Optimiser son contenu pour la monétisation.</p>
+                    </div>
+                </div>
+                
+                <!-- Section Outils -->
+                <div class="outils-section">
+                    <h3>Outils utilisés dans cette formation</h3>
+                    <div class="outils-grid">
+                        <div class="outil-item">
+                            <img src="https://gologin.com/favicon.ico" alt="Gologin">
+                            <h4>Gologin</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook">
+                            <h4>Facebook Creator</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://static.wikia.nocookie.net/logopedia/images/b/b5/IP_Quality_Score_2021.svg" alt="IP Score">
+                            <h4>IP Score Check</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/VPN_icon.svg/1200px-VPN_icon.svg.png" alt="Proxy">
+                            <h4>Réseau Proxy</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+            <div class="formation-sidebar">
+                <!-- Card Inscription -->
+                <div class="sidebar-card">
+                    <h3>Accéder à la formation</h3>
+                    <p>Débloquez dès aujourd'hui votre accès aux programmes de monétisation Facebook où que vous soyez dans le monde.</p>
+                    <a href="pg_methode_paiement" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Debloquez la formation
+                    </a>
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-shield-alt"></i> Garantie 30 jours satisfait ou remboursé
+                    </p>
+                </div>
+                
+                <!-- Card Détails -->
+                <div class="sidebar-card">
+                    <h3>Détails</h3>
+                    <p><strong><i class="far fa-clock"></i> Durée:</strong> 8 heures de formation</p>
+                    <p><strong><i class="fas fa-layer-group"></i> Niveau:</strong> Intermédiaire</p>
+                    <p><strong><i class="far fa-file-alt"></i> Ressources:</strong> Fichiers téléchargeables</p>
+                    <p><strong><i class="fas fa-infinity"></i> Accès:</strong> À vie et mises à jour incluses</p>
+                </div>
+                
+                <!-- Card Témoignages -->
+                <div class="sidebar-card">
+                    <h3>Avis des participants</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.7/5 (183 avis)</span>
+                    </div>
+                    <p>"Après 6 mois de refus, j'ai enfin pu activer la monétisation grâce à cette méthode. Merci !"</p>
+                    <a href="#testimonials" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Voir tous les avis
+                    </a>
+                </div>
+
+                <!-- Card Bonus -->
+                <div class="sidebar-card" style="border: 2px solid #00ffcc;">
+                    <h3><i class="fas fa-gift"></i> Bonus Exclusifs</h3>
+                    <p><strong>Liste</strong> des meilleurs pays pour la monétisation</p>
+                    <p><strong>Template</strong> de demande d'approbation Facebook</p>
+                    <p><strong>Guide PDF</strong> des critères d'éligibilité</p>
+                    <p><strong>Accès</strong> au groupe privé d'entraide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <h2 class="section-title">Questions fréquentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Cette méthode est-elle vraiment indétectable par Facebook ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Aucune méthode n'est 100% infaillible, mais Gologin est bien plus fiable qu'un VPN classique car il modifie tous les paramètres techniques (WebRTC, timezone, résolution d'écran, etc.). En suivant scrupuleusement nos instructions, les risques sont minimisés.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Dois-je payer un abonnement pour Gologin ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, Gologin propose un essai gratuit de 7 jours, puis des abonnements à partir de 24€/mois. C'est un investissement nécessaire pour une solution professionnelle. Notre formation inclut un code de réduction de 15%.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Que se passe-t-il si Facebook me détecte ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Le risque principal est la suspension temporaire des fonctionnalités de monétisation. Dans notre formation, nous vous expliquons comment réagir en cas de problème et reprendre rapidement votre activité.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je utiliser cette méthode pour d'autres plateformes ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui! La technique enseignée fonctionne aussi pour YouTube Partner Program, TikTok Creator Fund et d'autres plateformes avec restrictions géographiques. Nous abordons ces cas dans le module bonus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">Ils ont débloqué leur monétisation</h2>
+        <p>Témoignages de créateurs ayant suivi cette formation</p>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"Après 8 mois d'échecs avec les VPN gratuits, cette méthode a enfin fonctionné. J'ai pu activer les Stars et je génère maintenant 300-500€/mois depuis l'Afrique de l'Ouest."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohamed">
+                    <span>Mohamed K., Créateur de contenu</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"La configuration étape par étape est parfaite pour les non-techniques comme moi. En 3 jours j'avais accès aux bonus Reels alors que mon pays n'est pas éligible."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aïcha">
+                    <span>Aïcha B., Influenceuse</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-content">"Le groupe privé m'a sauvé la vie quand j'ai eu un warning de Facebook. L'équipe m'a aidé à résoudre le problème en 2h. Ce soutien vaut le prix de la formation !"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="David">
+                    <span>David T., Vidéaste</span>
+                </div>
+            </div>
+        </div>
+        
+        <a href="temoignages.html" class="btn btn-primary">
+            <i class="fas fa-comment"></i> Donner mon avis
+        </a>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à débloquer vos revenus Facebook ?</h2>
+            <p>Accédez aux programmes de monétisation comme si vous étiez aux États-Unis ou en Europe, où que vous soyez dans le monde.</p>
+            <a href="pg_methode_paiement.html" class="btn btn-primary" style="margin-top: 1.5rem;">
+                Commencer maintenant
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-btns">
+        <a href="https://wa.me/2290156410172" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="temoignages.html" class="testimonial-btn">
+            <i class="fas fa-comment"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>La plateforme de formation pour maximiser ses revenus sur les réseaux sociaux.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="pg_monetise_fac.html">Monétisation Facebook</a></li>
+                    <li><a href="#">Growth TikTok</a></li>
+                    <li><a href="#">YouTube Partner</a></li>
+                    <li><a href="#">Création de Contenu</a></li>
+                    <li><a href="#">Automatisation Social Media</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ressources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="temoignages.html">Témoignages</a></li>
+                    <li><a href="contact.html">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> tech.bits.fr@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +229 0156410172</li>
+                    <li><i class="fas fa-map-marker-alt"></i> BJ, Bénin</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('show');
+                toggle.classList.toggle('rotate');
+                
+                // Fermer les autres réponses
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer && item.classList.contains('show')) {
+                        item.classList.remove('show');
+                        item.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotate');
+                    }
+                });
+            });
+        });
+        
+        // Animation des éléments au scroll
+        const animateElements = document.querySelectorAll('.formation-section, .sidebar-card, .faq-item, .testimonial-card, .module-item, .outil-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Gratuite - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==== BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ==== ANIMATIONS ==== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* ==== HEADER STYLES ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== HERO SECTION ==== */
+        .hero {
+            background: linear-gradient(rgba(0, 102, 255, 0.9), rgba(0, 162, 255, 0.9)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 204, 0.2) 0%, transparent 30%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        /* ==== FORMATION SECTION ==== */
+        .formation-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #0066ff;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .formation-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+            margin-bottom: 3rem;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .formation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
+        }
+        
+        .formation-header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .formation-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .formation-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .formation-body {
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        
+        .formation-description {
+            margin-bottom: 2rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .features-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .features-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #00ffcc;
+        }
+        
+        .formation-footer {
+            background: #f9f9f9;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        
+        /* ==== AVANTAGES SECTION ==== */
+        .avantages-section {
+            background: linear-gradient(135deg, #f1f8ff 0%, #e6f2ff 100%);
+            padding: 5rem 5%;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .avantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .avantage-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+            text-align: center;
+        }
+        
+        .avantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.1);
+        }
+        
+        .avantage-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.2);
+        }
+        
+        .avantage-title {
+            font-size: 1.3rem;
+            color: #0066ff;
+            margin-bottom: 1rem;
+        }
+        
+        .avantage-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* ==== REMERCIEMENT SECTION ==== */
+        .remerciement-section {
+            padding: 5rem 5%;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .remerciement-content {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .remerciement-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #0066ff, #00ffcc);
+        }
+        
+        .remerciement-title {
+            font-size: 2rem;
+            color: #0066ff;
+            margin-bottom: 1.5rem;
+        }
+        
+        .remerciement-text {
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .engagement-text {
+            font-style: italic;
+            color: #888;
+            margin-top: 2rem;
+            position: relative;
+        }
+        
+        .engagement-text::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #00ffcc;
+            margin-right: 0.5rem;
+        }
+        
+        /* ==== CTA SECTION ==== */
+        .cta-section {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            margin: 3rem 0;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-text {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #0066ff;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 99;
+        }
+
+        .whatsapp-float, .formation-float {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float {
+            background-color: #25D366;
+            animation-delay: 0.2s;
+        }
+
+        .formation-float {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+        }
+
+        .whatsapp-float:hover, .formation-float:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            animation: none;
+        }
+
+        .tooltip {
+            position: absolute;
+            right: 70px;
+            background: #333;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .whatsapp-float:hover .tooltip, 
+        .formation-float:hover .tooltip {
+            opacity: 1;
+        }
+        
+        /* ==== RESPONSIVE ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="ressources.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="premium.html">Premium</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fas fa-gift"></i> Offre Spéciale Gagnants
+            </div>
+            <h1>Félicitations ! Vous avez gagné notre Formation Exclusive</h1>
+            <p>Découvrez les secrets du business en ligne qui ont transformé des centaines d'entrepreneurs</p>
+            <a href="#formation" class="btn btn-primary">Découvrir la formation</a>
+        </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section class="formation-section" id="formation">
+        <h2 class="section-title">Votre Formation Gratuite</h2>
+        
+        <div class="formation-card">
+            <div class="formation-header">
+                <h3 class="formation-title">Business Blueprint 2025</h3>
+                <p class="formation-subtitle">La méthode complète pour lancer et scaler votre business en ligne</p>
+            </div>
+            
+            <div class="formation-body">
+                <p class="formation-description">
+                    Cette formation exclusive de 6 semaines vous révèle le système étape par étape que nous utilisons pour créer des business en ligne rentables. Vous apprendrez à identifier des niches profitables, créer une offre irrésistible, attirer des clients qualifiés et automatiser vos ventes.
+                </p>
+                
+                <h4 style="color: #0066ff; margin-bottom: 1rem;">Ce que vous allez découvrir :</h4>
+                <ul class="features-list">
+                    <li>La stratégie "Funnel d'Or" pour convertir 3x plus de visiteurs en clients</li>
+                    <li>Comment trouver des produits à fort taux de conversion</li>
+                    <li>Les secrets du copywriting qui vend même pendant votre sommeil</li>
+                    <li>Notre méthode de publicité à ROI positif dès le jour 1</li>
+                    <li>Comment automatiser 80% de votre business avec 3 outils seulement</li>
+                    <li>Les 5 piliers d'un business en ligne résistant aux crises</li>
+                </ul>
+            </div>
+            
+            <div class="formation-footer">
+                <p><strong>Durée :</strong> 6 semaines | <strong>Format :</strong> Vidéos + PDF + Coaching Live</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avantages Section -->
+    <section class="avantages-section">
+        <h2 class="section-title">Pourquoi Cette Formation Est Unique</h2>
+        
+        <div class="avantages-grid">
+            <div class="avantage-card">
+                <div class="avantage-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="avantage-title">Résultats Rapides</h3>
+                <p class="avantage-description">Notre méthode permet de voir les premiers résultats en moins de 30 jours, même pour les débutants complets.</p>
+            </div>
+            
+            <div class="avantage-card">
+                <div class="avantage-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3 class="avantage-title">100% Gratuite</h3>
+                <p class="avantage-description">Cette formation d'une valeur de 497€ vous est offerte en récompense de votre participation à notre challenge.</p>
+            </div>
+            
+            <div class="avantage-card">
+                <div class="avantage-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="avantage-title">Communauté Exclusive</h3>
+                <p class="avantage-description">Accès à notre groupe privé avec des entrepreneurs ambitieux comme vous et des experts pour vous coacher.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Remerciement Section -->
+    <section class="remerciement-section">
+        <div class="remerciement-content">
+            <h3 class="remerciement-title">Un Grand Merci à Vous !</h3>
+            <p class="remerciement-text">
+                Nous sommes ravis de pouvoir offrir cette formation de haute qualité à nos membres les plus engagés. Votre participation active à notre communauté Facebook montre votre sérieux et votre volonté de réussir.
+            </p>
+            <p class="remerciement-text">
+                En retour, nous vous demandons simplement de rester actif sur notre page pour ne rien manquer des nouvelles formations, des lives exclusifs et des opportunités spéciales réservées à nos membres les plus fidèles.
+            </p>
+            <p class="engagement-text">
+                Votre succès est notre meilleure récompense. Nous nous engageons à vous fournir un contenu de qualité qui vous aide à atteindre vos objectifs.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h3 class="cta-title">Prêt à Transformer Votre Business ?</h3>
+            <p class="cta-text">Accédez dès maintenant à votre formation gratuite et découvrez nos autres programmes premium</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Accéder à la formation</a>
+                <a href="premium.html" class="btn btn-secondary">Voir nos autres formations</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>Formations professionnelles en business en ligne pour entrepreneurs ambitieux.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="#">Business en ligne</a></li>
+                    <li><a href="#">Dropshipping</a></li>
+                    <li><a href="#">Mindset</a></li>
+                    <li><a href="#">E-commerce</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Centre d'aide</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/2290156410172" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="tooltip">Contactez-nous sur WhatsApp</span>
+        </a>
+        <a href="premium.html" class="formation-float">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="tooltip">Voir nos formations premium</span>
+        </a>
+    </div>
+
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+
+        // FAQ Animation
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Scroll Animation
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.formation-section, .avantages-section, .remerciement-section, .cta-section');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.animation = 'fadeIn 1s ease-out forwards';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

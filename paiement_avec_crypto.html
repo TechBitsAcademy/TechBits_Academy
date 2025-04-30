@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement Crypto - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ==== HEADER STYLES ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== PAYMENT CONTAINER ==== */
+        .payment-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        
+        .payment-hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .payment-hero h1 {
+            color: #0066ff;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #0066ff;
+        }
+        
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .crypto-info {
+            background: #f1f8ff;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        .crypto-address {
+            font-weight: bold;
+            color: #0066ff;
+        }
+        
+        .amount-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ==== RESPONSIVE ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+        }
+
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 99;
+        }
+
+        .whatsapp-float, .dev-contact {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .whatsapp-float {
+            background-color: #25D366;
+        }
+
+        .dev-contact {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+        }
+
+        .whatsapp-float:hover, .dev-contact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .tooltip {
+            position: absolute;
+            right: 70px;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .whatsapp-float:hover .tooltip, 
+        .dev-contact:hover .tooltip {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="page_d'acceuil.html">Accueil</a></li>
+                <li><a href="nos_formations.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="nos_challenges.html">Nos challenges</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Payment Content -->
+    <main class="payment-container">
+        <div class="payment-hero">
+            <h1>Paiement en Cryptomonnaie</h1>
+            <p>Complétez votre achat en payant avec crypto</p>
+        </div>
+        
+        <div class="payment-card">
+            <form id="cryptoPaymentForm">
+                <div class="form-group">
+                    <label for="cryptoType">Sélectionnez la cryptomonnaie</label>
+                    <select id="cryptoType" required>
+                        <option value="">-- Choisissez --</option>
+                        <option value="usdt" data-address="pas Disponible" data-network="TRC20">USDT (TRC20)</option>
+                        <option value="bnb" data-address="0xe65359b0663c15dA452BeB60Ad2c572623B07705" data-network="BSC">BNB (BSC)</option>
+                        <option value="eth" data-address="pas Disponible" data-network="ERC20">Ethereum (ERC20)</option>
+                        <option value="sol" data-address="33N5RGurWwA9qL9EnBpPhUcmXrvEbM41R78iCiLUKHnN" data-network="Solana">Solana</option>
+                    </select>
+                </div>
+                
+                <div id="cryptoDetails" style="display: none;">
+                    <div class="form-group">
+                        <label>Adresse de paiement</label>
+                        <div class="crypto-info">
+                            <span class="crypto-address" id="walletAddress"></span>
+                            <div class="amount-info">
+                                <span>Montant à payer: <strong>$<span id="usdAmount">4.60</span></strong></span>
+                            </div>
+                            <small>Réseau: <span id="networkType"></span></small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Nom complet</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email (facultatif)</label>
+                        <input type="email" id="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whatsapp">Numéro WhatsApp</label>
+                        <input type="tel" id="whatsapp" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="txHash">Transaction Hash (ID de transaction)</label>
+                        <input type="text" id="txHash" required placeholder="Ex: 0x4a5b6c...">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Soumettre le paiement
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>Formations professionnelles en business en ligne</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Aide aux paiements</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/2290156410172" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="tooltip">Contactez-nous sur WhatsApp</span>
+        </a>
+        <a href="devtechbits@gmail.com" class="dev-contact" target="_blank">
+            <i class="fas fa-code"></i>
+            <span class="tooltip">Besoin d'un site web?</span>
+        </a>
+    </div>
+
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+
+        // Crypto Payment Form
+        const cryptoType = document.getElementById('cryptoType');
+        const cryptoDetails = document.getElementById('cryptoDetails');
+        const walletAddress = document.getElementById('walletAddress');
+        const networkType = document.getElementById('networkType');
+        const usdAmount = document.getElementById('usdAmount');
+        const form = document.getElementById('cryptoPaymentForm');
+        
+        // Prix fixe en dollars
+        const USD_PRICE = 4.60;
+        
+        cryptoType.addEventListener('change', function() {
+            if (this.value) {
+                const selectedOption = this.options[this.selectedIndex];
+                walletAddress.textContent = selectedOption.dataset.address;
+                networkType.textContent = selectedOption.dataset.network;
+                
+                // Afficher seulement le montant en dollars
+                usdAmount.textContent = USD_PRICE.toFixed(2);
+                
+                cryptoDetails.style.display = 'block';
+            } else {
+                cryptoDetails.style.display = 'none';
+            }
+        });
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupérer les données du formulaire
+            const formData = {
+                crypto: cryptoType.options[cryptoType.selectedIndex].text,
+                address: walletAddress.textContent,
+                usdAmount: USD_PRICE.toFixed(2),
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                txHash: document.getElementById('txHash').value
+            };
+            
+            // Créer le message WhatsApp
+            let message = `Bonjour TechBits Academy,\n`;
+            message += `Je viens d'effectuer un paiement pour la formation :\n\n`;
+            message += `- Cryptomonnaie: ${formData.crypto}\n`;
+            message += `- Montant: ${formData.usdAmount}$\n`;
+            message += `- Transaction Hash: ${formData.txHash}\n`;
+            message += `- Nom: ${formData.name}\n`;
+            if (formData.email) message += `- Email: ${formData.email}\n`;
+            message += `- WhatsApp: ${formData.whatsapp}\n\n`;
+            message += `Merci de confirmer ma transaction.`;
+            
+            // Encoder le message pour URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Rediriger vers WhatsApp
+            window.location.href = `https://wa.me/2290156410172?text=${encodedMessage}`;
+        });
+    </script>
+</body>
+</html>

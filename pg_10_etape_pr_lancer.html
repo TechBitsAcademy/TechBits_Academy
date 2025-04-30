@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Étapes pour Démarrer un Business - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== RESET & BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ==== HEADER & NAVBAR ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background-color: #00ffcc;
+            color: #0066ff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== FORMATION HERO ==== */
+        .formation-hero {
+            background: linear-gradient(rgba(0, 102, 255, 0.8), rgba(0, 162, 255, 0.8)), url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        .formation-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .formation-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .formation-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .badge-premium {
+            background: #0066ff;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .formation-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .price-premium {
+            color: white;
+        }
+        
+        .price-old {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 0.5rem;
+            position: absolute;
+            top: -15px;
+            left: -60px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.05rem;
+        }
+        
+        .btn-primary {
+            background: #00ffcc;
+            color: #0066ff;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ==== FORMATION CONTENT ==== */
+        .formation-container {
+            padding: 5rem 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .formation-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+        
+        @media (max-width: 992px) {
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .formation-main {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .formation-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sidebar-card h3 {
+            color: #0066ff;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .sidebar-card h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+        
+        .formation-section {
+            margin-bottom: 3.5rem;
+        }
+        
+        .formation-section h2 {
+            color: #0066ff;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-size: 2rem;
+        }
+        
+        .formation-section h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .module-item {
+            margin-bottom: 1.8rem;
+            padding-left: 1.8rem;
+            border-left: 3px solid #00a2ff;
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover {
+            border-left: 3px solid #00ffcc;
+        }
+        
+        .module-item h3 {
+            color: #0066ff;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .module-item h3 i {
+            margin-right: 12px;
+            color: #00a2ff;
+        }
+        
+        .module-item p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+        
+        .step-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8fcff;
+            border-radius: 10px;
+            border-left: 4px solid #00a2ff;
+        }
+        
+        .step-item h4 {
+            color: #0066ff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .step-item ul {
+            padding-left: 1.5rem;
+        }
+        
+        .step-item li {
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+        
+        .warning-box {
+            background: #fff8e6;
+            border-left: 4px solid #ffcc00;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        
+        .warning-box h4 {
+            color: #cc9900;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warning-box h4 i {
+            margin-right: 10px;
+        }
+        
+        /* ==== OUTILS SECTION ==== */
+        .outils-section {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .outils-section h3 {
+            color: #0066ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .outils-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .outil-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .outil-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .outil-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        
+        .outil-item h4 {
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        /* ==== FAQ SECTION ==== */
+        .faq-section {
+            background: #f1f8ff;
+            padding: 5rem 10%;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #0066ff;
+            font-size: 1.1rem;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8fcff;
+        }
+        
+        .faq-answer {
+            padding: 0 1.8rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 0 1.8rem 1.8rem;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.4s ease;
+            color: #00a2ff;
+        }
+        
+        .faq-toggle.rotate {
+            transform: rotate(180deg);
+        }
+        
+        /* ==== TESTIMONIALS SECTION ==== */
+        .testimonials-section {
+            padding: 5rem 10%;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f4ff 100%);
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 3.5rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .rating {
+            color: #ffcc00;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #0066ff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+            object-fit: cover;
+        }
+        
+        /* ==== CTA SECTION ==== */
+        .cta-section {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 6rem 10%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+        }
+        
+        .whatsapp-btn, .testimonial-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            color: white;
+            border: none;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+        }
+        
+        .testimonial-btn {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .whatsapp-btn:hover, .testimonial-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 4rem 10% 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.4rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 8px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        /* ==== RESPONSIVE DESIGN ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .formation-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .formation-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .floating-btns {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .formation-main, .sidebar-card {
+                padding: 1.5rem;
+            }
+            
+            .formation-section h2 {
+                font-size: 1.7rem;
+            }
+            
+            .module-item h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="ressources.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Formation Hero -->
+    <section class="formation-hero">
+        <div class="formation-badge badge-premium">Formation Pratique</div>
+        
+        <h1>10 Étapes pour Démarrer un Business</h1>
+        <p>La méthode simple et concrète pour lancer votre activité sans vous perdre ni vous ruiner</p>
+        
+        <div class="formation-price price-premium">
+            <span class="price-old">97€</span>
+            67€
+        </div>
+        
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">
+                <i class="fas fa-download"></i> Télécharger le guide
+            </a>
+            <a href="#" class="btn btn-secondary">
+                <i class="fas fa-play-circle"></i> Voir un extrait
+            </a>
+        </div>
+    </section>
+
+    <!-- Formation Content -->
+    <section class="formation-container">
+        <div class="formation-grid">
+            <div class="formation-main">
+                <!-- Section Description -->
+                <div class="formation-section">
+                    <h2>Description de la formation</h2>
+                    <p>Cette formation vous donne les 10 étapes concrètes pour transformer n'importe quelle idée en business rentable, même sans expérience ni gros budget. Contrairement aux méthodes théoriques, nous vous montrons exactement quoi faire jour après jour pour obtenir vos premiers clients.</p>
+                    <p>Vous apprendrez à valider votre idée, créer une offre irrésistible, trouver vos premiers clients et développer votre activité de manière organique, sans dépenser des fortunes en publicité.</p>
+                    
+                    <div class="warning-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Attention importante</h4>
+                        <p>Cette formation ne vous donnera pas d'idée magique. Elle vous montrera comment exécuter efficacement l'idée que vous avez déjà, ou comment en trouver une adaptée à votre situation.</p>
+                    </div>
+                </div>
+                
+                <!-- Section Programme -->
+                <div class="formation-section">
+                    <h2>Programme de la formation</h2>
+                    
+                    <div class="step-item">
+                        <h4>ÉTAPE 1 : Trouve une vraie idée qui règle un problème</h4>
+                        <ul>
+                            <li>Identifier un besoin réel dans votre environnement</li>
+                            <li>Exemples concrets d'idées qui répondent à des problèmes</li>
+                            <li>Éviter les idées trop génériques ou sans demande</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-item">
+                        <h4>ÉTAPE 2 : Teste ton idée dans ton entourage</h4>
+                        <ul>
+                            <li>Comment poser les bonnes questions pour valider votre idée</li>
+                            <li>5-10 personnes suffisent pour avoir un retour fiable</li>
+                            <li>Éviter les biais et interpréter correctement les réponses</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-item">
+                        <h4>ÉTAPE 3 : Fais simple avec ce que tu as</h4>
+                        <ul>
+                            <li>Utiliser WhatsApp, Facebook ou Telegram pour commencer</li>
+                            <li>Créer une offre claire avec les moyens du bord</li>
+                            <li>Outils gratuits pour créer du contenu professionnel</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-item">
+                        <h4>ÉTAPE 4 : Propose une offre irrésistible</h4>
+                        <ul>
+                            <li>Transformer les caractéristiques en bénéfices</li>
+                            <li>Exemples de reformulations qui font vendre</li>
+                            <li>Éviter les promesses exagérées tout en restant attractif</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-item">
+                        <h4>ÉTAPE 5 : Trouve ton tout premier client</h4>
+                        <ul>
+                            <li>Stratégies pour obtenir ce premier client crucial</li>
+                            <li>Offres spéciales pour les premiers testeurs</li>
+                            <li>Utiliser son réseau personnel intelligemment</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-item">
+                        <h4>ÉTAPE 6 : Apprends à bien parler de ton business</h4>
+                        <ul>
+                            <li>Créer un pitch efficace en une phrase</li>
+                            <li>Adapter son discours selon l'interlocuteur</li>
+                            <li>Exemples concrets de pitches réussis</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-item">
+                        <h4>ÉTAPE 7 : Crée un petit système (même artisanal)</h4>
+                        <ul>
+                            <li>Gérer commandes, paiements et livraisons simplement</li>
+                            <li>Outils gratuits pour automatiser certaines tâches</li>
+                            <li>Exemples de systèmes efficaces avec peu de moyens</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-item">
+                        <h4>ÉTAPE 8 : Rends ton business visible (même sans argent)</h4>
+                        <ul>
+                            <li>Créer du contenu utile ou drôle pour attirer l'attention</li>
+                            <li>Montrer les coulisses pour créer du lien</li>
+                            <li>Stratégies de visibilité organique sur les réseaux</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-item">
+                        <h4>ÉTAPE 9 : Analyse ce qui marche (et ce qui foire)</h4>
+                        <ul>
+                            <li>Méthode simple pour évaluer ses progrès</li>
+                            <li>Indicateurs clés à surveiller au début</li>
+                            <li>Apprendre de ses erreurs sans se décourager</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-item">
+                        <h4>ÉTAPE 10 : Améliore et automatise</h4>
+                        <ul>
+                            <li>Quand et comment passer à l'étape supérieure</li>
+                            <li>Automatiser les tâches répétitives</li>
+                            <li>Recruter ses premiers collaborateurs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Section Outils -->
+                <div class="outils-section">
+                    <h3>Outils recommandés</h3>
+                    <div class="outils-grid">
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2048px-WhatsApp.svg.png" alt="WhatsApp">
+                            <h4>WhatsApp Business</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                            <h4>Facebook Marketplace</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/1024px-Canva_icon_2021.svg.png" alt="Canva">
+                            <h4>Canva</h4>
+                        </div>
+                        <div class="outil-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Notion_app_logo.png/1024px-Notion_app_logo.png" alt="Notion">
+                            <h4>Notion</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section Formateur -->
+                <div class="formation-section">
+                    <h2>Votre formateur</h2>
+                    <div class="instructor-card">
+                        <div class="instructor-avatar">TR</div>
+                        <div class="instructor-info">
+                            <h4>TechR</h4>
+                            <p>Entrepreneur et formateur depuis 8 ans. J'ai aidé des milliers de personnes à lancer leur business avec des méthodes simples et adaptées aux réalités africaines, sans besoin de gros budget.</p>
+                            <div class="instructor-social">
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="formation-sidebar">
+                <!-- Card Inscription -->
+                <div class="sidebar-card">
+                    <h3>Accéder à la formation</h3>
+                    <p>Démarrez dès aujourd'hui votre business avec notre méthode éprouvée en 10 étapes simples.</p>
+                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        S'inscrire maintenant
+                    </a>
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-shield-alt"></i> Garantie 30 jours satisfait ou remboursé
+                    </p>
+                </div>
+                
+                <!-- Card Détails -->
+                <div class="sidebar-card">
+                    <h3>Détails</h3>
+                    <p><strong><i class="far fa-clock"></i> Durée:</strong> 5 heures de formation</p>
+                    <p><strong><i class="fas fa-layer-group"></i> Niveau:</strong> Débutant</p>
+                    <p><strong><i class="far fa-file-alt"></i> Ressources:</strong> 10 fichiers téléchargeables</p>
+                    <p><strong><i class="fas fa-certificate"></i> Certification:</strong> Incluse</p>
+                    <p><strong><i class="fas fa-infinity"></i> Accès:</strong> À vie et mises à jour incluses</p>
+                </div>
+                
+                <!-- Card Témoignages -->
+                <div class="sidebar-card">
+                    <h3>Avis des participants</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.7/5 (243 avis)</span>
+                    </div>
+                    <p>"Grâce à ces 10 étapes, j'ai lancé mon service de plats maison et j'ai 15 clients réguliers en 2 mois seulement !"</p>
+                    <a href="#testimonials" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        Voir tous les avis
+                    </a>
+                </div>
+
+                <!-- Card Bonus -->
+                <div class="sidebar-card" style="border: 2px solid #00ffcc;">
+                    <h3><i class="fas fa-gift"></i> Bonus Exclusifs</h3>
+                    <p><strong>Template</strong> de plan d'affaires simplifié</p>
+                    <p><strong>Liste</strong> de 20 idées de business testées</p>
+                    <p><strong>Modèles</strong> de messages pour trouver des clients</p>
+                    <p><strong>Accès</strong> au groupe privé d'entraide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <h2 class="section-title">Questions fréquentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Combien de temps faut-il pour voir les premiers résultats ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Cela dépend de votre implication et du type de business. Certains de nos élèves ont obtenu leur premier client en moins d'une semaine, d'autres en 2-3 semaines. L'important est d'appliquer méthodiquement les 10 étapes.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je suivre cette formation sans idée précise ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui! Nous incluons des exercices et une liste d'idées testées pour vous aider à trouver l'activité qui vous correspond. La première étape de la formation est justement dédiée à identifier une bonne idée adaptée à votre situation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Est-ce adapté si je veux un business en ligne ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolument. La méthode fonctionne pour les business physiques comme en ligne. Nous adaptons simplement les outils recommandés (WhatsApp/Facebook pour du local, d'autres plateformes pour du 100% en ligne).</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Que faire si je bloque à une étape ?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Notre groupe privé d'entraide est là pour ça ! Vous pourrez poser vos questions et bénéficier de l'expérience des autres membres et de notre équipe. Nous répondons généralement dans les 24h.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">Ils ont lancé leur business avec cette méthode</h2>
+        <p>Témoignages de nos élèves entrepreneurs</p>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"J'ai suivi les étapes une par une. En 3 semaines, j'avais mon premier client pour mon service de réparation de téléphones. Aujourd'hui, c'est mon activité principale !"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohamed">
+                    <span>Mohamed K., Réparateur</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-content">"Le module sur l'offre irrésistible a tout changé pour moi. J'ai reformulé ma proposition et mes ventes ont doublé en 2 semaines. Merci pour ces conseils concrets !"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aïcha">
+                    <span>Aïcha B., Vendeuse</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-content">"Je n'avais que 50 000 FCFA pour démarrer. Grâce aux astuces pour faire simple, j'ai pu lancer mon élevage de poulets sans m'endetter. Maintenant, j'agrandis !"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="David">
+                    <span>David T., Éleveur</span>
+                </div>
+            </div>
+        </div>
+        
+        <a href="temoignages.html" class="btn btn-primary">
+            <i class="fas fa-comment"></i> Donner mon avis
+        </a>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à lancer votre business ?</h2>
+            <p>Démarrez dès aujourd'hui avec notre méthode en 10 étapes simples et concrètes, adaptée aux débutants sans gros budget.</p>
+            <a href="#" class="btn btn-primary" style="margin-top: 1.5rem;">
+                Commencer maintenant
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-btns">
+        <a href="https://wa.me/2290156410172" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="temoignages.html" class="testimonial-btn">
+            <i class="fas fa-comment"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>La plateforme de formation pour maximiser ses revenus sur les réseaux sociaux.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="#">10 Étapes Business</a></li>
+                    <li><a href="#">E-commerce Local</a></li>
+                    <li><a href="#">Monétisation Facebook</a></li>
+                    <li><a href="#">Growth TikTok</a></li>
+                    <li><a href="#">Automatisation Social Media</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ressources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Témoignages</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> tech.bits.fr@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +229 0156410172</li>
+                    <li><i class="fas fa-map-marker-alt"></i> BJ, Bénin</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('show');
+                toggle.classList.toggle('rotate');
+                
+                // Fermer les autres réponses
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer && item.classList.contains('show')) {
+                        item.classList.remove('show');
+                        item.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotate');
+                    }
+                });
+            });
+        });
+        
+        // Animation des éléments au scroll
+        const animateElements = document.querySelectorAll('.formation-section, .sidebar-card, .faq-item, .testimonial-card, .module-item, .outil-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

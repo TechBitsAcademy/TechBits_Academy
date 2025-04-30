@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==== RESET & BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ==== HEADER & NAVBAR ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background-color: #00ffcc;
+            color: #0066ff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== RESOURCES SECTION ==== */
+        .resources {
+            padding: 5rem 10%;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #0066ff;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: #00ffcc;
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+        
+        .resources-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: #666;
+        }
+        
+        .resources-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            margin: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background: #e9ecef;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.2);
+        }
+        
+        .resource-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .badge-available {
+            background: #2ed573;
+        }
+        
+        .badge-coming {
+            background: #ffa502;
+        }
+        
+        .badge-premium {
+            background: #0066ff;
+        }
+        
+        .badge-free {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .resource-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .resource-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-content h3 {
+            margin-bottom: 0.5rem;
+            color: #0066ff;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .resource-level {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: #f1f2f6;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .resource-btn {
+            display: block;
+            text-align: center;
+            padding: 0.6rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #00ffcc;
+            color: #0066ff;
+        }
+        
+        .resource-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .coming-soon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .coming-soon-overlay h4 {
+            color: #0066ff;
+            margin-bottom: 1rem;
+        }
+        
+        .notify-form {
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .notify-form input {
+            width: 100%;
+            padding: 0.6rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .notify-form button {
+            width: 100%;
+            padding: 0.6rem;
+            background: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .notify-form button:hover {
+            background: #0052cc;
+        }
+        
+        /* Floating buttons */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+        }
+        
+        .whatsapp-btn, .dev-contact-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            color: white;
+            border: none;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+        }
+        
+        .dev-contact-btn {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+        }
+        
+        .whatsapp-btn:hover, .dev-contact-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dev-contact-popup {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            z-index: 100;
+            display: none;
+        }
+        
+        .dev-contact-popup h4 {
+            color: #0066ff;
+            margin-bottom: 1rem;
+        }
+        
+        .dev-contact-popup p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .dev-contact-popup a {
+            color: #00a2ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .dev-contact-popup a:hover {
+            text-decoration: underline;
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 3rem 10%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ==== RESPONSIVE DESIGN ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dev-contact-popup {
+                width: calc(100% - 60px);
+                right: 30px;
+                left: 30px;
+                bottom: 180px;
+            }
+            
+            .floating-btns {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="page_d'acceuil.html">Accueil</a></li>
+                <li><a href="nos_formations.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="nos_challenges.html">Nos challenges</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Resources Section -->
+    <section class="resources">
+        <h2 class="section-title">Nos Formations</h2>
+        <p class="resources-intro">Découvrez toutes nos formations pour booster votre business en ligne. Formations disponibles et à venir.</p>
+        
+        <div class="resources-tabs">
+            <button class="tab-btn active" data-category="all">Toutes</button>
+            <button class="tab-btn" data-category="available">Disponibles</button>
+            <button class="tab-btn" data-category="coming">Bientôt</button>
+            <button class="tab-btn" data-category="free">Gratuites</button>
+            <button class="tab-btn" data-category="premium">Premium</button>
+        </div>
+        
+        <div class="resources-grid" id="resourcesGrid">
+            <!-- Formation 1 -->
+            <div class="resource-card" data-category="available premium">
+                <div class="resource-badge badge-premium">Premium</div>
+                <div class="resource-image" style="background-image: url('image/eco_image.jpeg');"></div>
+                <div class="resource-content">
+                    <h3>E-commerce Local</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+                    </div>
+                    <span class="resource-level">Niveau: Intermédiaire</span>
+                    <p class="resource-desc">Créez une boutique en ligne rentable en ciblant votre marché local avec des stratégies éprouvées.</p>
+                    <a href="pg_eco_local.html" class="resource-btn btn-primary">Accéder à la formation</a>
+                </div>
+            </div>
+            
+            <!-- Formation 2 -->
+            <div class="resource-card" data-category="available premium">
+                <div class="resource-badge badge-premium">Premium</div>
+                <div class="resource-image" style="background-image: url('image/fac_monetise.jpeg');"></div>
+                <div class="resource-content">
+                    <h3>Monétisation Facebook</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+                    </div>
+                    <span class="resource-level">Niveau: Avancé</span>
+                    <p class="resource-desc">Apprenez à contourner les restrictions géographiques pour monétiser sur Facebook depuis n'importe quel pays.</p>
+                    <a href="pg_monetise_fac.html" class="resource-btn btn-primary">Accéder à la formation</a>
+                </div>
+            </div>
+            
+            <!-- Formation 3 -->
+            <div class="resource-card" data-category="available free">
+                <div class="resource-badge badge-free">Gratuit</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
+                <div class="resource-content">
+                    <h3>Mindset Entrepreneurial</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Gratuit</span>
+                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+                    </div>
+                    <span class="resource-level">Niveau: Débutant</span>
+                    <p class="resource-desc">Développez la mentalité qui vous propulsera vers le succès à long terme en tant qu'entrepreneur.</p>
+                    <a href="pg_mindset_entrepreneur.html" class="resource-btn btn-secondary">Commencer maintenant</a>
+                </div>
+            </div>
+            
+            <!-- Formation 4 -->
+            <div class="resource-card" data-category="coming free">
+                <div class="resource-badge badge-coming">Bientôt</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="resource-content">
+                    <div class="coming-soon-overlay">
+                        <h4>Disponible prochainement</h4>
+                        <p>Soyez notifié dès le lancement !</p>
+                        <form class="notify-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit">M'informer</button>
+                        </form>
+                    </div>
+                    <h3>Gestion d'échec</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Gratuit</span>
+                        <span><i class="far fa-clock"></i> Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Tous niveaux</span>
+                    <p class="resource-desc">Apprenez à transformer vos échecs en tremplin pour réussir dans votre business en ligne.</p>
+                    <a href="pg_gestion_d'echec.html" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+            
+            <!-- Formation 5 -->
+            <div class="resource-card" data-category="available free">
+                <div class="resource-badge badge-free">Gratuit</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="resource-content">
+                    <h3>10 étapes pour lancer son business</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Gratuit</span>
+                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+                    </div>
+                    <span class="resource-level">Niveau: Débutant</span>
+                    <p class="resource-desc">Le guide complet pour démarrer votre business en ligne étape par étape.</p>
+                    <a href="pg_10_etape_pr_lancer.html" class="resource-btn btn-secondary">Commencer maintenant</a>
+                </div>
+            </div>
+            
+            <!-- Formation 6 -->
+            <div class="resource-card" data-category="available free">
+                <div class="resource-badge badge-free">Gratuit</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1546074177-ffdda98d214f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');"></div>
+                <div class="resource-content">
+                    <h3>Trouver son idée de business (PDF)</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Gratuit</span>
+                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+                    </div>
+                    <span class="resource-level">Niveau: Débutant</span>
+                    <p class="resource-desc">Guide PDF pour identifier des idées de business rentables adaptées à vos compétences.</p>
+                    <a href="pg_trouver_sa_idee_de_business.html" class="resource-btn btn-secondary">Télécharger</a>
+                </div>
+            </div>
+            
+            <!-- Formation 7 -->
+            <div class="resource-card" data-category="available premium">
+                <div class="resource-badge badge-premium">Premium</div>
+                <div class="resource-image" style="background-image: url('image/lancer_business_autour.jpeg');"></div>
+                <div class="resource-content">
+                    <h3>Lancer un business autour de soi</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+                    </div>
+                    <span class="resource-level">Niveau: Intermédiaire</span>
+                    <p class="resource-desc">De la recherche de niche jusqu'au lancement, apprenez à créer un business local rentable.</p>
+                    <a href="pg_idee_en_business.html" class="resource-btn btn-primary">Accéder à la formation</a>
+                </div>
+            </div>
+            
+            <!-- Formation 8 -->
+            <div class="resource-card" data-category="coming premium">
+                <div class="resource-badge badge-coming">Bientôt</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
+                <div class="resource-content">
+                    <div class="coming-soon-overlay">
+                        <h4>Disponible prochainement</h4>
+                        <p>Soyez notifié dès le lancement !</p>
+                        <form class="notify-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit">M'informer</button>
+                        </form>
+                    </div>
+                    <h3>Masterclass IA</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="far fa-clock"></i> Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Avancé</span>
+                    <p class="resource-desc">Maîtrisez les outils d'IA les plus puissants pour automatiser et scaler votre business.</p>
+                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+            
+            <!-- Formation 9 -->
+            <div class="resource-card" data-category="coming premium">
+                <div class="resource-badge badge-coming">Bientôt</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="resource-content">
+                    <div class="coming-soon-overlay">
+                        <h4>Disponible prochainement</h4>
+                        <p>Soyez notifié dès le lancement !</p>
+                        <form class="notify-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit">M'informer</button>
+                        </form>
+                    </div>
+                    <h3>Dropshipping Avancé</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="far fa-clock"></i> Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Avancé</span>
+                    <p class="resource-desc">Stratégies avancées pour scaler votre business de dropshipping à 6 chiffres.</p>
+                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+            
+            <!-- Formation 10 -->
+            <div class="resource-card" data-category="coming premium">
+                <div class="resource-badge badge-coming">Bientôt</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1655720828019-a9d037afc7b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="resource-content">
+                    <div class="coming-soon-overlay">
+                        <h4>Disponible prochainement</h4>
+                        <p>Soyez notifié dès le lancement !</p>
+                        <form class="notify-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit">M'informer</button>
+                        </form>
+                    </div>
+                    <h3>Automatisation No-Code avec ChatGPT</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="far fa-clock"></i> Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Intermédiaire</span>
+                    <p class="resource-desc">Automatisez 80% de vos tâches avec ChatGPT et gagnez des heures chaque jour.</p>
+                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+            
+            <!-- Formation 11 -->
+            <div class="resource-card" data-category="coming premium">
+                <div class="resource-badge badge-coming">Bientôt</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
+                <div class="resource-content">
+                    <div class="coming-soon-overlay">
+                        <h4>Disponible prochainement</h4>
+                        <p>Soyez notifié dès le lancement !</p>
+                        <form class="notify-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit">M'informer</button>
+                        </form>
+                    </div>
+                    <h3>Automatisation WhatsApp No-Code</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="far fa-clock"></i> Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Intermédiaire</span>
+                    <p class="resource-desc">Automatisez vos messages WhatsApp sans coder pour gérer efficacement vos clients.</p>
+                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+            
+            <!-- Formation 12 -->
+            <div class="resource-card" data-category="available premium">
+                <div class="resource-badge badge-premium">Premium</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');"></div>
+                <div class="resource-content">
+                    <h3>Création de visuels avec IA</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="fas fa-check-circle"></i> Disponible Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Débutant</span>
+                    <p class="resource-desc">Créez logos, flyers et visuels professionnels avec l'IA sans compétences en design.</p>
+                    <a href="#" class="resource-btn btn-primary">Bientôt</a>
+                </div>
+            </div>
+            
+            <!-- Formation 13 -->
+            <div class="resource-card" data-category="coming premium">
+                <div class="resource-badge badge-coming">Bientôt</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');"></div>
+                <div class="resource-content">
+                    <div class="coming-soon-overlay">
+                        <h4>Disponible prochainement</h4>
+                        <p>Soyez notifié dès le lancement !</p>
+                        <form class="notify-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit">M'informer</button>
+                        </form>
+                    </div>
+                    <h3>Monétisation TikTok depuis pays non éligible</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="far fa-clock"></i> Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Intermédiaire</span>
+                    <p class="resource-desc">Contournez les restrictions géographiques pour monétiser TikTok depuis n'importe quel pays.</p>
+                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+            
+            <!-- Formation 14 -->
+            <div class="resource-card" data-category="coming premium">
+                <div class="resource-badge badge-coming">Bientôt</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');"></div>
+                <div class="resource-content">
+                    <div class="coming-soon-overlay">
+                        <h4>Disponible prochainement</h4>
+                        <p>Soyez notifié dès le lancement !</p>
+                        <form class="notify-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit">M'informer</button>
+                        </form>
+                    </div>
+                    <h3>Monétisation YouTube</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="far fa-clock"></i> Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Intermédiaire</span>
+                    <p class="resource-desc">Stratégies avancées pour générer des revenus passifs avec YouTube.</p>
+                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+            
+            <!-- Formation 15 -->
+            <div class="resource-card" data-category="coming premium">
+                <div class="resource-badge badge-coming">Bientôt</div>
+                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1574717024453-3545e7cc5e7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="resource-content">
+                    <div class="coming-soon-overlay">
+                        <h4>Disponible prochainement</h4>
+                        <p>Soyez notifié dès le lancement !</p>
+                        <form class="notify-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit">M'informer</button>
+                        </form>
+                    </div>
+                    <h3>Création de vidéos avec IA</h3>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-tag"></i> Payant</span>
+                        <span><i class="far fa-clock"></i> Bientôt</span>
+                    </div>
+                    <span class="resource-level">Niveau: Intermédiaire</span>
+                    <p class="resource-desc">Produisez des vidéos professionnelles en quelques minutes grâce à l'intelligence artificielle.</p>
+                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-btns">
+        <a href="https://wa.me/2290156410172" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="dev-contact-btn" id="devContactBtn">
+            <i class="fas fa-code"></i>
+        </button>
+    </div>
+    
+    <div class="dev-contact-popup" id="devContactPopup">
+        <button class="close-popup" id="closePopup">&times;</button>
+        <h4>Besoin d'aide technique ?</h4>
+        <p>Si vous avez besoin d'assistance pour le développement de votre site ou application, contactez notre équipe de développement.</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:devtechbits@gmail.com">dev@techbits.com</a></p>
+        <p><i class="fas fa-phone"></i> +229 0156410172</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>La plateforme de formation pour entrepreneurs ambitieux voulant maîtriser le business en ligne.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li>Business en Ligne</li>
+                    <li>Outils IA</li>
+                    <li>Monétisation</li>
+                    <li>E-commerce</li>
+                    <li>Dropshipping</li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ressources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Outils Gratuits</a></li>
+                    <li><a href="#">Modèles</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> tech.bits.fr@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +229 0156410172</li>
+                    <li><i class="fas fa-map-marker-alt"></i> BJ,Bénin</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu Burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+        
+        // Filtrage des formations
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const resourceCards = document.querySelectorAll('.resource-card');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                tabBtns.forEach(b => b.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                
+                // Filtrer les cartes
+                resourceCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Bouton contact développeur
+        const devContactBtn = document.getElementById('devContactBtn');
+        const devContactPopup = document.getElementById('devContactPopup');
+        const closePopup = document.getElementById('closePopup');
+        
+        devContactBtn.addEventListener('click', () => {
+            devContactPopup.style.display = 'block';
+        });
+        
+        closePopup.addEventListener('click', () => {
+            devContactPopup.style.display = 'none';
+        });
+        
+        // Fermer le popup en cliquant à l'extérieur
+        window.addEventListener('click', (e) => {
+            if (e.target === devContactPopup) {
+                devContactPopup.style.display = 'none';
+            }
+        });
+        
+        // Animation des cartes au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        resourceCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

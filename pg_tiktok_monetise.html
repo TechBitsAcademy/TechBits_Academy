@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte TikTok Monétisable - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==== BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ==== ANIMATIONS ==== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.5); }
+        }
+        
+        /* ==== HEADER STYLES ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00ffcc;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ==== HERO SECTION ==== */
+        .hero {
+            background: linear-gradient(rgba(0, 102, 255, 0.9), rgba(0, 162, 255, 0.9)), url('https://images.unsplash.com/photo-1611162616475-46592b321512?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 204, 0.2) 0%, transparent 30%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        /* ==== FORMATION SECTION ==== */
+        .formation-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #0066ff;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .formation-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+            margin-bottom: 3rem;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .formation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
+        }
+        
+        .formation-header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .formation-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .formation-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .formation-body {
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        
+        .formation-description {
+            margin-bottom: 2rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .features-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .features-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #00ffcc;
+        }
+        
+        .formation-footer {
+            background: #f9f9f9;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        
+        /* ==== AVANTAGES SECTION ==== */
+        .avantages-section {
+            background: linear-gradient(135deg, #f1f8ff 0%, #e6f2ff 100%);
+            padding: 5rem 5%;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .avantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .avantage-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+            text-align: center;
+        }
+        
+        .avantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.1);
+        }
+        
+        .avantage-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.2);
+        }
+        
+        .avantage-title {
+            font-size: 1.3rem;
+            color: #0066ff;
+            margin-bottom: 1rem;
+        }
+        
+        .avantage-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* ==== TEMOIGNAGES SECTION ==== */
+        .temoignages-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .temoignages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .temoignage-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border-top: 4px solid #00ffcc;
+        }
+        
+        .temoignage-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: rgba(0, 102, 255, 0.1);
+            font-size: 3rem;
+            z-index: 0;
+        }
+        
+        .temoignage-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .temoignage-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0066ff;
+            margin-bottom: 1rem;
+        }
+        
+        .temoignage-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .temoignage-auteur {
+            font-weight: 600;
+            color: #0066ff;
+        }
+        
+        .temoignage-pays {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.3rem;
+        }
+        
+        /* ==== CTA SECTION ==== */
+        .cta-section {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            margin: 3rem 0;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-text {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #0066ff;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Téléchargement Section */
+        .download-section {
+            padding: 3rem 5%;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.1);
+            max-width: 800px;
+            margin: 2rem auto;
+            animation: glow 2s infinite;
+        }
+
+        .download-title {
+            color: #0066ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .download-text {
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+            animation: shake 0.5s;
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+        }
+
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Méthodes Section */
+        .methodes-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .methodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .methode-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+            border-top: 4px solid #0066ff;
+        }
+
+        .methode-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.1);
+        }
+
+        .methode-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #0066ff;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .methode-title {
+            color: #0066ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 99;
+        }
+
+        .whatsapp-float, .formation-float {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+    
+        
+        .formation-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .price-premium {
+            color: white;
+        }
+        
+        .price-old {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 0.5rem;
+            position: absolute;
+            top: -15px;
+            left: -60px;
+        }
+        .whatsapp-float {
+            background-color: #25D366;
+            animation-delay: 0.2s;
+        }
+
+        .formation-float {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+        }
+
+        .whatsapp-float:hover, .formation-float:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            animation: none;
+        }
+
+        .tooltip {
+            position: absolute;
+            right: 70px;
+            background: #333;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .whatsapp-float:hover .tooltip, 
+        .formation-float:hover .tooltip {
+            opacity: 1;
+        }
+        
+        /* ==== RESPONSIVE ==== */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #0066ff;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="nos_formations.html">Formations</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="nos_challenges.html">Nos challenges</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>         
+            
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fas fa-money-bill-trend-up"></i> Monétisation TikTok
+            </div>
+            <h1>Créez Votre Compte TikTok Monétisable et Gagnez Grâce aux Vues</h1>
+            <p>Découvrez notre méthode exclusive pour créer des comptes TikTok éligibles à la monétisation et générez des revenus passifs</p>
+
+            <div class="formation-price price-premium">
+                <span class="price-old">11.850 FCFA</span>
+                3.300 FCFA/5,46$
+            </div>
+            <div>    
+            <a href="#formation" class="btn btn-primary">Commencer maintenant</a>
+        </div>
+        </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section class="formation-section" id="formation">
+        <h2 class="section-title">Notre Formation Premium</h2>
+        
+        <div class="formation-card">
+            <div class="formation-header">
+                <h3 class="formation-title">TikTok Money Machine</h3>
+                <p class="formation-subtitle">La méthode complète pour créer des comptes monétisables</p>
+            </div>
+            
+            <div class="formation-body">
+                <p class="formation-description">
+                    Cette formation intensive vous révèle étape par étape comment créer et développer des comptes TikTok qui répondent aux critères de monétisation. Vous apprendrez à optimiser chaque aspect de votre compte pour maximiser vos revenus grâce aux vues et aux autres programmes de TikTok.
+                </p>
+                
+                <h4 style="color: #0066ff; margin-bottom: 1rem;">Ce que vous allez maîtriser :</h4>
+                <ul class="features-list">
+                    <li>La configuration parfaite d'un compte monétisable (paramètres critiques)</li>
+                    <li>Comment choisir une niche rentable avec faible concurrence</li>
+                    <li>Optimisation du profil pour passer les vérifications TikTok</li>
+                    <li>Les types de contenu qui génèrent le plus de revenus</li>
+                    <li>Techniques pour booster l'engagement et les vues</li>
+                    <li>Comment contourner les restrictions géographiques</li>
+                    <li>Les 5 erreurs qui bloquent votre monétisation</li>
+                </ul>
+
+                <!-- Section Téléchargement -->
+                <div class="download-section">
+                    <h3 class="download-title">Accès Immédiat à la Formation</h3>
+                    <p class="download-text">Téléchargez maintenant et commencez à générer des revenus dès cette semaine</p>
+                    <a class="btn"href="pg_methode_paiement.html">Télécharger</a>
+                </div>
+            </div>
+            
+            <div class="formation-footer">
+                <p><strong>Bonus :</strong> Liste des pays les plus rentables + Modèles de contenu prêts à l'emploi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avantages Section -->
+    <section class="avantages-section">
+        <h2 class="section-title">Pourquoi Nos Comptes Sont Monétisables</h2>
+        
+        <div class="avantages-grid">
+            <div class="avantage-card">
+                <div class="avantage-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="avantage-title">Revenus Passifs</h3>
+                <p class="avantage-description">Gagnez de l'argent même lorsque vous dormez grâce au programme de partage de revenus TikTok.</p>
+            </div>
+            
+            <div class="avantage-card">
+                <div class="avantage-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="avantage-title">Pays Éligibles</h3>
+                <p class="avantage-description">Nos méthodes vous permettent de créer des comptes éligibles même si vous êtes dans un pays non supporté.</p>
+            </div>
+            
+            <div class="avantage-card">
+                <div class="avantage-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="avantage-title">100% Conforme</h3>
+                <p class="avantage-description">Toutes nos techniques respectent les conditions d'utilisation de TikTok pour une monétisation durable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section class="temoignages-section">
+        <h2 class="section-title">Ils Ont Réussi Avec Notre Méthode</h2>
+        
+        <div class="temoignages-grid">
+            <div class="temoignage-card">
+                <div class="temoignage-content">
+                    <img src="f1 (1).jpeg" alt="Amina" class="temoignage-avatar">
+                    <p class="temoignage-text">
+                        "Grâce à cette formation, j'ai pu monétiser mon compte TikTok alors que je suis au Sénégal. Je gagne maintenant entre 100$ et 300$ par mois juste avec les vues de mon deuxième compte ou je partage des vidéos de motivation!"
+                    </p>
+                    <span class="temoignage-auteur">Amina D.</span>
+                    <span class="temoignage-pays">Sénégal</span>
+                </div>
+            </div>
+            
+            <div class="temoignage-card">
+                <div class="temoignage-content">
+                    <img src="f1 (2).jpeg" alt="Kwame" class="temoignage-avatar">
+                    <p class="temoignage-text">
+                        "En suivant les étapes exactes de la formation, j'ai créé 3 comptes monétisables en 2 mois. Le premier compte me rapporte déjà 70$ par semaine."
+                    </p>
+                    <span class="temoignage-auteur">Kwame T.</span>
+                    <span class="temoignage-pays">Burkina faso</span>
+                </div>
+            </div>
+            
+            <div class="temoignage-card">
+                <div class="temoignage-content">
+                    <img src="f1 (1).jpg" alt="Fatou" class="temoignage-avatar">
+                    <p class="temoignage-text">
+                        "Je n'y croyais pas au début, mais après avoir appliqué la méthode du 'pays relais', mon compte a été accepté dans le programme de monétisation. Merci !"
+                    </p>
+                    <span class="temoignage-auteur">Fatou B.</span>
+                    <span class="temoignage-pays">Côte d'Ivoire</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Méthodes Section -->
+    <section class="methodes-section">
+        <h2 class="section-title">Comment Ça Marche ?</h2>
+        
+        <div class="methodes-grid">
+            <div class="methode-card">
+                <div class="methode-number">1</div>
+                <h3 class="methode-title">Configuration Initiale</h3>
+                <p>Nous vous guidons pour créer votre compte avec les bons paramètres dès le départ (langue, région, type de compte).</p>
+            </div>
+            
+            <div class="methode-card">
+                <div class="methode-number">2</div>
+                <h3 class="methode-title">Optimisation du Profil</h3>
+                <p>Les éléments clés à inclure dans votre bio, photo de profil et liens pour maximiser vos chances d'approbation.</p>
+            </div>
+            
+            <div class="methode-card">
+                <div class="methode-number">3</div>
+                <h3 class="methode-title">Stratégie de Contenu</h3>
+                <p>Les formats de vidéos qui génèrent le plus de revenus et comment les produire rapidement.</p>
+            </div>
+            
+            <div class="methode-card">
+                <div class="methode-number">4</div>
+                <h3 class="methode-title">Croissance Organique</h3>
+                <p>Techniques pour augmenter vos vues et engagement sans violer les règles de TikTok.</p>
+            </div>
+            
+            <div class="methode-card">
+                <div class="methode-number">5</div>
+                <h3 class="methode-title">Monétisation</h3>
+                <p>Processus exact pour soumettre votre compte et être approuvé dans les programmes de paiement.</p>
+            </div>
+            
+            <div class="methode-card">
+                <div class="methode-number">6</div>
+                <h3 class="methode-title">Optimisation des Revenus</h3>
+                <p>Comment maximiser vos gains une fois monétisé et diversifier vos sources de revenus.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h3 class="cta-title">Prêt à Créer Votre Compte Monétisable ?</h3>
+            <p class="cta-text">Rejoignez nos étudiants qui génèrent déjà des revenus passifs avec TikTok</p>
+            <div class="cta-buttons">
+                <a href="pg_methode_paiement.html" class="btn btn-primary">Télécharger la formation</a>
+                <a href="nos_formations.html" class="btn btn-secondary">Voir nos formules premium</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>Spécialistes en monétisation des réseaux sociaux.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="pg_tiktok_monetise.html">TikTok Monétisation</a></li>
+                    <li><a href="#">Growth TikTok</a></li>
+                    <li><a href="#">Création de Contenu</a></li>
+                    <li><a href="#">Programmes Premium</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Questions fréquentes</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                    <li><a href="#">Politique de remboursement</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/2290156410172" class="whatsapp-float" target="_blank"></a>
+
+
+    </div>
+</body>
+</html>
+           

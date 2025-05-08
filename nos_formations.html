@@ -3,24 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formations - TechBits Academy</title>
+    <title>Nos Formations - TechBits Academy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ==== RESET & BASE STYLES ==== */
+        /* ==== BASE STYLES ==== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        /* ==== HEADER & NAVBAR ==== */
+        /* ==== ANIMATIONS ==== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.5); }
+        }
+        
+        
+        /* ==== HEADER STYLES ==== */
         header {
             background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
             color: white;
@@ -29,6 +62,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            animation: fadeIn 0.8s ease-out;
         }
         
         .navbar {
@@ -85,342 +119,342 @@
             width: 100%;
         }
         
-        .cta-button {
-            background-color: #00ffcc;
-            color: #0066ff;
-            border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
-        }
-        
         .burger {
             display: none;
             cursor: pointer;
         }
         
-        /* ==== RESOURCES SECTION ==== */
-        .resources {
-            padding: 5rem 10%;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #0066ff;
-            position: relative;
-            display: inline-block;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 4px;
-            background: #00ffcc;
-            bottom: -10px;
-            left: 25%;
-            border-radius: 2px;
-        }
-        
-        .resources-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            color: #666;
-        }
-        
-        .resources-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .tab-btn {
-            padding: 0.8rem 2rem;
-            background: white;
-            border: none;
-            border-radius: 50px;
-            margin: 0.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tab-btn.active {
+        /* ==== HERO SECTION ==== */
+        .page-hero {
             background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
             color: white;
+            padding: 5rem 5%;
+            text-align: center;
         }
         
-        .tab-btn:hover:not(.active) {
-            background: #e9ecef;
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeIn 0.8s ease-out;
         }
         
-        .resources-grid {
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* ==== FILTRES SECTION ==== */
+        .filters-section {
+            padding: 2rem 5%;
+            background: white;
+            position: sticky;
+            top: 80px;
+            z-index: 90;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filters-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            background: #f1f8ff;
+            color: #0066ff;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #0066ff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.2);
+        }
+        
+        /* ==== FORMATIONS SECTION ==== */
+        .formations-section {
+            padding: 3rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .formations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
         }
         
-        .resource-card {
+        .formation-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+            animation-delay: calc(var(--order) * 0.1s);
         }
         
-        .resource-card:hover {
+        .formation-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.1);
         }
         
-        .resource-badge {
+        .formation-header {
+            padding: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .formation-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            padding: 0.3rem 1rem;
+            top: -15px;
+            right: 20px;
+            padding: 0.5rem 1rem;
             border-radius: 50px;
-            font-size: 0.8rem;
             font-weight: 600;
+            font-size: 0.8rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .badge-gratuit {
+            background: #00cc66;
             color: white;
         }
         
-        .badge-available {
-            background: #2ed573;
+        .badge-payant {
+            background: #ff6600;
+            color: white;
         }
         
-        .badge-coming {
-            background: #ffa502;
+        .formation-status {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
         
-        .badge-premium {
-            background: #0066ff;
+        .status-disponible {
+            background: rgba(0, 204, 102, 0.2);
+            color: #00cc66;
         }
         
-        .badge-free {
-            background: #00ffcc;
+        .status-bientot {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+        
+        .status-indisponible {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff0000;
+        }
+        
+        .formation-title {
+            font-size: 1.4rem;
             color: #0066ff;
-        }
-        
-        .resource-image {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .resource-content {
-            padding: 1.5rem;
-        }
-        
-        .resource-content h3 {
+            margin-top: 1.5rem;
             margin-bottom: 0.5rem;
+        }
+        
+        .formation-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-tag {
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            background: #f1f8ff;
             color: #0066ff;
         }
         
-        .resource-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #666;
+        .tag-ia {
+            background: #e6f7ff;
+            color: #00a2ff;
         }
         
-        .resource-level {
-            display: inline-block;
-            padding: 0.2rem 0.8rem;
-            background: #f1f2f6;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
+        .tag-business {
+            background: #f0fff0;
+            color: #00a000;
         }
         
-        .resource-desc {
+        .tag-nocode {
+            background: #fff0f5;
+            color: #ff1493;
+        }
+        
+        .tag-mindset {
+            background: #fff8e6;
+            color: #ff8c00;
+        }
+        
+        .formation-body {
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        .formation-description {
             color: #666;
             margin-bottom: 1.5rem;
             font-size: 0.95rem;
         }
         
-        .resource-btn {
-            display: block;
-            text-align: center;
-            padding: 0.6rem;
-            border-radius: 5px;
-            text-decoration: none;
+        .formation-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             font-weight: 600;
+            text-decoration: none;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            width: 100%;
         }
         
         .btn-primary {
             background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
             color: white;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
         }
         
         .btn-secondary {
-            background: #00ffcc;
+            background: #f1f8ff;
             color: #0066ff;
         }
         
-        .resource-btn:hover {
+        .btn-secondary:hover {
+            background: #e6f2ff;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .coming-soon-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .coming-soon-overlay h4 {
-            color: #0066ff;
-            margin-bottom: 1rem;
         }
         
         .notify-form {
-            width: 100%;
-            max-width: 300px;
-        }
-        
-        .notify-form input {
-            width: 100%;
-            padding: 0.6rem;
-            margin-bottom: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .notify-form button {
-            width: 100%;
-            padding: 0.6rem;
-            background: #0066ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .notify-form button:hover {
-            background: #0052cc;
-        }
-        
-        /* Floating buttons */
-        .floating-btns {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            flex-direction: column;
-            z-index: 99;
-        }
-        
-        .whatsapp-btn, .dev-contact-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin-bottom: 15px;
-            color: white;
-            border: none;
-        }
-        
-        .whatsapp-btn {
-            background: #25D366;
-        }
-        
-        .dev-contact-btn {
-            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
-        }
-        
-        .whatsapp-btn:hover, .dev-contact-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .dev-contact-popup {
-            position: fixed;
-            bottom: 120px;
-            right: 30px;
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            z-index: 100;
+            margin-top: 1rem;
             display: none;
         }
         
-        .dev-contact-popup h4 {
-            color: #0066ff;
+        .notify-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .form-group {
             margin-bottom: 1rem;
         }
         
-        .dev-contact-popup p {
-            margin-bottom: 1rem;
+        .form-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
         
-        .dev-contact-popup a {
-            color: #00a2ff;
-            text-decoration: none;
-            font-weight: 500;
+        .form-input:focus {
+            border-color: #0066ff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
         }
         
-        .dev-contact-popup a:hover {
-            text-decoration: underline;
+        .notification-success {
+            color: #00cc66;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            display: none;
         }
         
-        .close-popup {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
+        /* ==== NEWSLETTER SECTION ==== */
+        .newsletter-section {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 4rem 5%;
+            margin: 3rem 0 0;
+            text-align: center;
+        }
+        
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .newsletter-text {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: #666;
+            font-size: 1rem;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
         }
         
         /* ==== FOOTER ==== */
         footer {
-            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            background: #111;
             color: white;
-            padding: 3rem 10%;
+            padding: 3rem 5%;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .footer-column h3 {
@@ -490,7 +524,8 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* ==== RESPONSIVE DESIGN ==== */
+        
+        /* ==== RESPONSIVE ==== */
         @media screen and (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -516,20 +551,16 @@
                 display: block;
             }
             
-            .resources-grid {
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .formations-grid {
                 grid-template-columns: 1fr;
             }
             
-            .dev-contact-popup {
-                width: calc(100% - 60px);
-                right: 30px;
-                left: 30px;
-                bottom: 180px;
-            }
-            
-            .floating-btns {
-                bottom: 20px;
-                right: 20px;
+            .newsletter-form {
+                flex-direction: column;
             }
         }
     </style>
@@ -544,12 +575,13 @@
             </div>
             
             <ul class="nav-links">
-                <li><a href="page_d'acceuil.html">Accueil</a></li>
-                <li><a href="nos_formations.html">Formations</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="nos_formations.html" class="active">Formations</a></li>
                 <li><a href="temoignages.html">Témoignages</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="nos_challenges.html">Nos challenges</a></li>
+                <li><a href="nos_challenges">Nos challenges</a></li>
+                <li><a href="contact.html">contact</a></li>
                 <li><a href="faq.html">FAQ</a></li>
+
             </ul>
             
             <div class="burger">
@@ -558,463 +590,715 @@
         </nav>
     </header>
 
-    <!-- Resources Section -->
-    <section class="resources">
-        <h2 class="section-title">Nos Formations</h2>
-        <p class="resources-intro">Découvrez toutes nos formations pour booster votre business en ligne. Formations disponibles et à venir.</p>
-        
-        <div class="resources-tabs">
-            <button class="tab-btn active" data-category="all">Toutes</button>
-            <button class="tab-btn" data-category="available">Disponibles</button>
-            <button class="tab-btn" data-category="coming">Bientôt</button>
-            <button class="tab-btn" data-category="free">Gratuites</button>
-            <button class="tab-btn" data-category="premium">Premium</button>
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <h1>Découvre nos formations pour transformer tes compétences en succès !</h1>
+        <p>Des formations conçues pour te propulser vers la réussite, que tu sois débutant ou déjà lancé !</p>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="filters-container">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-layer-group"></i> Toutes
+            </button>
+            <button class="filter-btn" data-filter="gratuit">
+                <i class="fas fa-gift"></i> Gratuit
+            </button>
+            <button class="filter-btn" data-filter="payant">
+                <i class="fas fa-tag"></i> Payant
+            </button>
+            <button class="filter-btn" data-filter="ia">
+                <i class="fas fa-robot"></i> IA
+            </button>
+            <button class="filter-btn" data-filter="business">
+                <i class="fas fa-briefcase"></i> Business
+            </button>
+            <button class="filter-btn" data-filter="nocode">
+                <i class="fas fa-code"></i> No-Code
+            </button>
+            <button class="filter-btn" data-filter="mindset">
+                <i class="fas fa-brain"></i> Mindset
+            </button>
         </div>
-        
-        <div class="resources-grid" id="resourcesGrid">
+    </section>
+
+    <!-- Formations Section -->
+    <section class="formations-section">
+        <div class="formations-grid">
             <!-- Formation 1 -->
-            <div class="resource-card" data-category="available premium">
-                <div class="resource-badge badge-premium">Premium</div>
-                <div class="resource-image" style="background-image: url('image/eco_image.jpeg');"></div>
-                <div class="resource-content">
-                    <h3>E-commerce Local</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+            <div class="formation-card" data-categories="payant business" data-status="indisponible" data-price="payant" style="--order: 1">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-indisponible">Non disponible</span>
+                    <h3 class="formation-title">Monétiser Facebook depuis un pays non éligible</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <span class="resource-level">Niveau: Intermédiaire</span>
-                    <p class="resource-desc">Créez une boutique en ligne rentable en ciblant votre marché local avec des stratégies éprouvées.</p>
-                    <a href="pg_eco_local.html" class="resource-btn btn-primary">Accéder à la formation</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Apprenez à générer des revenus avec Facebook même si vous êtes dans un pays non éligible aux programmes de monétisation officiels.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Monétiser Facebook depuis un pays non éligible">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
                 </div>
             </div>
-            
+
             <!-- Formation 2 -->
-            <div class="resource-card" data-category="available premium">
-                <div class="resource-badge badge-premium">Premium</div>
-                <div class="resource-image" style="background-image: url('image/fac_monetise.jpeg');"></div>
-                <div class="resource-content">
-                    <h3>Monétisation Facebook</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+            <div class="formation-card" data-categories="payant business" data-status="disponible" data-price="payant" style="--order: 2">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-disponible">Disponible</span>
+                    <h3 class="formation-title">Monétiser TikTok</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <span class="resource-level">Niveau: Avancé</span>
-                    <p class="resource-desc">Apprenez à contourner les restrictions géographiques pour monétiser sur Facebook depuis n'importe quel pays.</p>
-                    <a href="pg_monetise_fac.html" class="resource-btn btn-primary">Accéder à la formation</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        La méthode complète pour créer des comptes TikTok monétisables et générer des revenus grâce aux vues, même dans les pays non éligibles.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <a href="pg_tiktok_monetise.html" class="btn btn-primary">En savoir plus</a>
                 </div>
             </div>
-            
+
             <!-- Formation 3 -->
-            <div class="resource-card" data-category="available free">
-                <div class="resource-badge badge-free">Gratuit</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
-                <div class="resource-content">
-                    <h3>Mindset Entrepreneurial</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Gratuit</span>
-                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+            <div class="formation-card" data-categories="payant business" data-status="disponible" data-price="payant" style="--order: 3">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-disponible">Disponible</span>
+                    <h3 class="formation-title">E-commerce Local</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <span class="resource-level">Niveau: Débutant</span>
-                    <p class="resource-desc">Développez la mentalité qui vous propulsera vers le succès à long terme en tant qu'entrepreneur.</p>
-                    <a href="pg_mindset_entrepreneur.html" class="resource-btn btn-secondary">Commencer maintenant</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Créez un business e-commerce local sans avoir à gérer de stock ni de livraison, avec des marges intéressantes.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <a href="pg_eco_local.html" class="btn btn-primary">En savoir plus</a>
                 </div>
             </div>
-            
+
             <!-- Formation 4 -->
-            <div class="resource-card" data-category="coming free">
-                <div class="resource-badge badge-coming">Bientôt</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                <div class="resource-content">
-                    <div class="coming-soon-overlay">
-                        <h4>Disponible prochainement</h4>
-                        <p>Soyez notifié dès le lancement !</p>
-                        <form class="notify-form">
-                            <input type="email" placeholder="Votre email" required>
-                            <button type="submit">M'informer</button>
-                        </form>
+            <div class="formation-card" data-categories="gratuit mindset" data-status="disponible" data-price="gratuit" style="--order: 4">
+                <div class="formation-header">
+                    <span class="formation-badge badge-gratuit">Gratuit</span>
+                    <span class="formation-status status-disponible">Disponible</span>
+                    <h3 class="formation-title">Mindset entrepreneurial</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-mindset">Mindset</span>
                     </div>
-                    <h3>Gestion d'échec</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Gratuit</span>
-                        <span><i class="far fa-clock"></i> Bientôt</span>
-                    </div>
-                    <span class="resource-level">Niveau: Tous niveaux</span>
-                    <p class="resource-desc">Apprenez à transformer vos échecs en tremplin pour réussir dans votre business en ligne.</p>
-                    <a href="pg_gestion_d'echec.html" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Développez l'état d'esprit nécessaire pour réussir en tant qu'entrepreneur et surmonter les obstacles.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <a href="pg_mindset_entrepreneur.html" class="btn btn-primary">En savoir plus</a>
                 </div>
             </div>
-            
+
             <!-- Formation 5 -->
-            <div class="resource-card" data-category="available free">
-                <div class="resource-badge badge-free">Gratuit</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                <div class="resource-content">
-                    <h3>10 étapes pour lancer son business</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Gratuit</span>
-                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+            <div class="formation-card" data-categories="payant ia" data-status="indisponible" data-price="payant" style="--order: 5">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-indisponible">Non disponible</span>
+                    <h3 class="formation-title">Masterclass IA</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-ia">IA</span>
                     </div>
-                    <span class="resource-level">Niveau: Débutant</span>
-                    <p class="resource-desc">Le guide complet pour démarrer votre business en ligne étape par étape.</p>
-                    <a href="pg_10_etape_pr_lancer.html" class="resource-btn btn-secondary">Commencer maintenant</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Maîtrisez les outils d'intelligence artificielle les plus puissants pour booster votre productivité et vos business.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Masterclass IA">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
                 </div>
             </div>
-            
+
             <!-- Formation 6 -->
-            <div class="resource-card" data-category="available free">
-                <div class="resource-badge badge-free">Gratuit</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1546074177-ffdda98d214f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');"></div>
-                <div class="resource-content">
-                    <h3>Trouver son idée de business (PDF)</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Gratuit</span>
-                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+            <div class="formation-card" data-categories="payant business" data-status="bientot" data-price="payant" style="--order: 6">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Importation Chine avec Alibaba</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <span class="resource-level">Niveau: Débutant</span>
-                    <p class="resource-desc">Guide PDF pour identifier des idées de business rentables adaptées à vos compétences.</p>
-                    <a href="pg_trouver_sa_idee_de_business.html" class="resource-btn btn-secondary">Télécharger</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Apprenez à importer des produits de Chine en toute sécurité via Alibaba et à les revendre avec une bonne marge.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Importation Chine avec Alibaba">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
                 </div>
             </div>
-            
+
             <!-- Formation 7 -->
-            <div class="resource-card" data-category="available premium">
-                <div class="resource-badge badge-premium">Premium</div>
-                <div class="resource-image" style="background-image: url('image/lancer_business_autour.jpeg');"></div>
-                <div class="resource-content">
-                    <h3>Lancer un business autour de soi</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="fas fa-check-circle"></i> Disponible</span>
+            <div class="formation-card" data-categories="gratuit mindset" data-status="bientot" data-price="gratuit" style="--order: 7">
+                <div class="formation-header">
+                    <span class="formation-badge badge-gratuit">Gratuit</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Gestion d'échecs</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-mindset">Mindset</span>
                     </div>
-                    <span class="resource-level">Niveau: Intermédiaire</span>
-                    <p class="resource-desc">De la recherche de niche jusqu'au lancement, apprenez à créer un business local rentable.</p>
-                    <a href="pg_idee_en_business.html" class="resource-btn btn-primary">Accéder à la formation</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Transformez vos échecs en opportunités d'apprentissage et en tremplin vers le succès.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Gestion d'échecs">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
                 </div>
             </div>
-            
+
             <!-- Formation 8 -->
-            <div class="resource-card" data-category="coming premium">
-                <div class="resource-badge badge-coming">Bientôt</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
-                <div class="resource-content">
-                    <div class="coming-soon-overlay">
-                        <h4>Disponible prochainement</h4>
-                        <p>Soyez notifié dès le lancement !</p>
-                        <form class="notify-form">
-                            <input type="email" placeholder="Votre email" required>
-                            <button type="submit">M'informer</button>
-                        </form>
+            <div class="formation-card" data-categories="gratuit business" data-status="disponible" data-price="gratuit" style="--order: 8">
+                <div class="formation-header">
+                    <span class="formation-badge badge-gratuit">Gratuit</span>
+                    <span class="formation-status status-disponible">Disponible</span>
+                    <h3 class="formation-title">Trouver son idée de business</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <h3>Masterclass IA</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="far fa-clock"></i> Bientôt</span>
-                    </div>
-                    <span class="resource-level">Niveau: Avancé</span>
-                    <p class="resource-desc">Maîtrisez les outils d'IA les plus puissants pour automatiser et scaler votre business.</p>
-                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Découvrez comment identifier des idées de business rentables qui correspondent à vos compétences et à votre marché.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <a href="pg_idee_en_business.html" class="btn btn-primary">En savoir plus</a>
                 </div>
             </div>
-            
+
             <!-- Formation 9 -->
-            <div class="resource-card" data-category="coming premium">
-                <div class="resource-badge badge-coming">Bientôt</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                <div class="resource-content">
-                    <div class="coming-soon-overlay">
-                        <h4>Disponible prochainement</h4>
-                        <p>Soyez notifié dès le lancement !</p>
-                        <form class="notify-form">
-                            <input type="email" placeholder="Votre email" required>
-                            <button type="submit">M'informer</button>
-                        </form>
+            <div class="formation-card" data-categories="gratuit business" data-status="disponible" data-price="gratuit" style="--order: 9">
+                <div class="formation-header">
+                    <span class="formation-badge badge-gratuit">Gratuit</span>
+                    <span class="formation-status status-disponible">Disponible</span>
+                    <h3 class="formation-title">10 étapes pour lancer son business</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <h3>Dropshipping Avancé</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="far fa-clock"></i> Bientôt</span>
-                    </div>
-                    <span class="resource-level">Niveau: Avancé</span>
-                    <p class="resource-desc">Stratégies avancées pour scaler votre business de dropshipping à 6 chiffres.</p>
-                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Le guide étape par étape pour transformer votre idée en un business concret, même sans expérience.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <a href="pg_10_etape_pr_lancer.html" class="btn btn-primary">En savoir plus</a>
                 </div>
             </div>
-            
+
             <!-- Formation 10 -->
-            <div class="resource-card" data-category="coming premium">
-                <div class="resource-badge badge-coming">Bientôt</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1655720828019-a9d037afc7b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                <div class="resource-content">
-                    <div class="coming-soon-overlay">
-                        <h4>Disponible prochainement</h4>
-                        <p>Soyez notifié dès le lancement !</p>
-                        <form class="notify-form">
-                            <input type="email" placeholder="Votre email" required>
-                            <button type="submit">M'informer</button>
-                        </form>
+            <div class="formation-card" data-categories="payant business" data-status="disponible" data-price="payant" style="--order: 10">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-disponible">Disponible</span>
+                    <h3 class="formation-title">Lancer un business autour de toi</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <h3>Automatisation No-Code avec ChatGPT</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="far fa-clock"></i> Bientôt</span>
-                    </div>
-                    <span class="resource-level">Niveau: Intermédiaire</span>
-                    <p class="resource-desc">Automatisez 80% de vos tâches avec ChatGPT et gagnez des heures chaque jour.</p>
-                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Identifiez les opportunités de business dans votre environnement proche et créez une entreprise locale rentable.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <a href="pg_business_autour.html" class="btn btn-primary">En savoir plus</a>
                 </div>
             </div>
-            
+
             <!-- Formation 11 -->
-            <div class="resource-card" data-category="coming premium">
-                <div class="resource-badge badge-coming">Bientôt</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');"></div>
-                <div class="resource-content">
-                    <div class="coming-soon-overlay">
-                        <h4>Disponible prochainement</h4>
-                        <p>Soyez notifié dès le lancement !</p>
-                        <form class="notify-form">
-                            <input type="email" placeholder="Votre email" required>
-                            <button type="submit">M'informer</button>
-                        </form>
+            <div class="formation-card" data-categories="payant business" data-status="bientot" data-price="payant" style="--order: 11">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Dropshipping avancé</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <h3>Automatisation WhatsApp No-Code</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="far fa-clock"></i> Bientôt</span>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Stratégies avancées pour créer un business de dropshipping rentable à long terme avec des fournisseurs fiables.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Dropshipping avancé">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
                     </div>
-                    <span class="resource-level">Niveau: Intermédiaire</span>
-                    <p class="resource-desc">Automatisez vos messages WhatsApp sans coder pour gérer efficacement vos clients.</p>
-                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
                 </div>
             </div>
-            
+
             <!-- Formation 12 -->
-            <div class="resource-card" data-category="available premium">
-                <div class="resource-badge badge-premium">Premium</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');"></div>
-                <div class="resource-content">
-                    <h3>Création de visuels avec IA</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="fas fa-check-circle"></i> Disponible Bientôt</span>
+            <div class="formation-card" data-categories="payant business" data-status="bientot" data-price="payant" style="--order: 12">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Monétisation YouTube</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <span class="resource-level">Niveau: Débutant</span>
-                    <p class="resource-desc">Créez logos, flyers et visuels professionnels avec l'IA sans compétences en design.</p>
-                    <a href="#" class="resource-btn btn-primary">Bientôt</a>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        La méthode complète pour monétiser une chaîne YouTube même dans les pays non éligibles au Programme Partenaire.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Monétisation YouTube">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
                 </div>
             </div>
-            
+
             <!-- Formation 13 -->
-            <div class="resource-card" data-category="coming premium">
-                <div class="resource-badge badge-coming">Bientôt</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');"></div>
-                <div class="resource-content">
-                    <div class="coming-soon-overlay">
-                        <h4>Disponible prochainement</h4>
-                        <p>Soyez notifié dès le lancement !</p>
-                        <form class="notify-form">
-                            <input type="email" placeholder="Votre email" required>
-                            <button type="submit">M'informer</button>
-                        </form>
+            <div class="formation-card" data-categories="payant business" data-status="bientot" data-price="payant" style="--order: 13">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Création d'un compte PayPal dans un pays non éligible</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business en ligne</span>
                     </div>
-                    <h3>Monétisation TikTok depuis pays non éligible</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="far fa-clock"></i> Bientôt</span>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Solution légale pour créer et utiliser un compte PayPal même si votre pays n'est pas officiellement supporté.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Création d'un compte PayPal dans un pays non éligible">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
                     </div>
-                    <span class="resource-level">Niveau: Intermédiaire</span>
-                    <p class="resource-desc">Contournez les restrictions géographiques pour monétiser TikTok depuis n'importe quel pays.</p>
-                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
                 </div>
             </div>
-            
+
             <!-- Formation 14 -->
-            <div class="resource-card" data-category="coming premium">
-                <div class="resource-badge badge-coming">Bientôt</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');"></div>
-                <div class="resource-content">
-                    <div class="coming-soon-overlay">
-                        <h4>Disponible prochainement</h4>
-                        <p>Soyez notifié dès le lancement !</p>
-                        <form class="notify-form">
-                            <input type="email" placeholder="Votre email" required>
-                            <button type="submit">M'informer</button>
-                        </form>
+            <div class="formation-card" data-categories="payant nocode" data-status="bientot" data-price="payant" style="--order: 14">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Automatisation WhatsApp No-Code</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-nocode">No-Code</span>
                     </div>
-                    <h3>Monétisation YouTube</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="far fa-clock"></i> Bientôt</span>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Automatisez vos conversations WhatsApp sans coder pour gagner du temps et améliorer votre service client.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Automatisation WhatsApp No-Code">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
                     </div>
-                    <span class="resource-level">Niveau: Intermédiaire</span>
-                    <p class="resource-desc">Stratégies avancées pour générer des revenus passifs avec YouTube.</p>
-                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+
+            <!-- Formation 15 -->
+            <div class="formation-card" data-categories="gratuit ia" data-status="bientot" data-price="gratuit" style="--order: 15">
+                <div class="formation-header">
+                    <span class="formation-badge badge-gratuit">Gratuit</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Création de contenus avec l'IA</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-ia">IA</span>
+                    </div>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Utilisez l'intelligence artificielle pour générer du contenu de qualité en quelques minutes.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Création de contenus avec l'IA">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation 16 -->
+            <div class="formation-card" data-categories="payant ia business" data-status="bientot" data-price="payant" style="--order: 16">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Optimisation des publicités Facebook avec l'IA</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-ia">IA</span>
+                        <span class="category-tag tag-business">Business</span>
+                    </div>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Réduisez vos coûts publicitaires et augmentez vos conversions grâce à l'analyse prédictive de l'IA.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Optimisation des publicités Facebook avec l'IA">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation 17 -->
+            <div class="formation-card" data-categories="payant business" data-status="bientot" data-price="payant" style="--order: 16">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Stratégie de contenu pour vendre sur WhatsApp</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business</span>
+                    </div>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        La méthode complète pour créer un flux de clients qualifiés via WhatsApp et les convertir en ventes.                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Optimisation des publicités Facebook avec l'IA">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Formation 15 -->
-            <div class="resource-card" data-category="coming premium">
-                <div class="resource-badge badge-coming">Bientôt</div>
-                <div class="resource-image" style="background-image: url('https://images.unsplash.com/photo-1574717024453-3545e7cc5e7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                <div class="resource-content">
-                    <div class="coming-soon-overlay">
-                        <h4>Disponible prochainement</h4>
-                        <p>Soyez notifié dès le lancement !</p>
-                        <form class="notify-form">
-                            <input type="email" placeholder="Votre email" required>
-                            <button type="submit">M'informer</button>
-                        </form>
+           
+            <!-- Formation 18 -->
+
+            <div class="formation-card" data-categories="payant ia business" data-status="bientot" data-price="payant" style="--order: 16">
+                <div class="formation-header">
+                    <span class="formation-badge badge-gratuit">Gratuit</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Validation d'idées de business avec l'IA</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-ia">IA</span>
+                        <span class="category-tag tag-business">Business</span>
                     </div>
-                    <h3>Création de vidéos avec IA</h3>
-                    <div class="resource-meta">
-                        <span><i class="fas fa-tag"></i> Payant</span>
-                        <span><i class="far fa-clock"></i> Bientôt</span>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Utilisez l'intelligence artificielle pour tester et valider vos idées de business avant d'investir du temps et de l'argent.                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Optimisation des publicités Facebook avec l'IA">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
                     </div>
-                    <span class="resource-level">Niveau: Intermédiaire</span>
-                    <p class="resource-desc">Produisez des vidéos professionnelles en quelques minutes grâce à l'intelligence artificielle.</p>
-                    <a href="#" class="resource-btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+           
+
+            <!-- Formation 19 -->
+            <div class="formation-card" data-categories="payant business" data-status="bientot" data-price="payant" style="--order: 19">
+                <div class="formation-header">
+                    <span class="formation-badge badge-payant">Payant</span>
+                    <span class="formation-status status-bientot">Bientôt dispo</span>
+                    <h3 class="formation-title">Formation avancée sur le marketing d'affiliation</h3>
+                    <div class="formation-categories">
+                        <span class="category-tag tag-business">Business</span>
+                    </div>
+                </div>
+                <div class="formation-body">
+                    <p class="formation-description">
+                        Stratégies avancées pour générer des revenus passifs grâce au marketing d'affiliation, même en tant que débutant.
+                    </p>
+                </div>
+                <div class="formation-footer">
+                    <button class="btn btn-secondary toggle-notify">Me notifier</button>
+                    <div class="notify-form">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre email" data-formation="Formation avancée sur le marketing d'affiliation">
+                        </div>
+                        <button class="btn btn-primary notify-submit">Être informé</button>
+                        <div class="notification-success">Merci ! Vous serez notifié dès que cette formation sera disponible.</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Floating Buttons -->
-    <div class="floating-btns">
-        <a href="https://wa.me/2290156410172" class="whatsapp-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <button class="dev-contact-btn" id="devContactBtn">
-            <i class="fas fa-code"></i>
-        </button>
-    </div>
-    
-    <div class="dev-contact-popup" id="devContactPopup">
-        <button class="close-popup" id="closePopup">&times;</button>
-        <h4>Besoin d'aide technique ?</h4>
-        <p>Si vous avez besoin d'assistance pour le développement de votre site ou application, contactez notre équipe de développement.</p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:devtechbits@gmail.com">dev@techbits.com</a></p>
-        <p><i class="fas fa-phone"></i> +229 0156410172</p>
-    </div>
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">Tu veux être le premier à découvrir nos nouvelles formations ?</h2>
+            <p class="newsletter-text">Abonne-toi à notre newsletter pour recevoir les dernières actualités et offres exclusives.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Ton adresse email" required>
+                <button type="submit" class="btn btn-primary">S'abonner</button>
+            </form>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
                 <h3>TechBits Academy</h3>
-                <p>La plateforme de formation pour entrepreneurs ambitieux voulant maîtriser le business en ligne.</p>
+                <p>Formations pratiques pour entrepreneurs et créateurs de contenu.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            
             <div class="footer-column">
                 <h3>Formations</h3>
                 <ul>
-                    <li>Business en Ligne</li>
-                    <li>Outils IA</li>
-                    <li>Monétisation</li>
-                    <li>E-commerce</li>
-                    <li>Dropshipping</li>
+                    <li><a href="nos_formations.html">Toutes les formations</a></li>
+                    <li><a href="nos_formations.html">Formations gratuites</a></li>
+                    <li><a href="nos_formations.html">Formations premium</a></li>
+                    <li><a href="#">Nouveautés</a></li>
                 </ul>
             </div>
-            
             <div class="footer-column">
                 <h3>Ressources</h3>
                 <ul>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">Outils Gratuits</a></li>
-                    <li><a href="#">Modèles</a></li>
+                    <li><a href="#">Outils gratuits</a></li>
+                    <li><a href="temoignages.html">Témoignages</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                 </ul>
             </div>
-            
             <div class="footer-column">
-                <h3>Contact</h3>
+                <h3>Légal</h3>
                 <ul>
-                    <li><i class="fas fa-envelope"></i> tech.bits.fr@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> +229 0156410172</li>
-                    <li><i class="fas fa-map-marker-alt"></i> BJ,Bénin</li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">CGU</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Conditions de vente</a></li>
                 </ul>
             </div>
         </div>
-        
         <div class="copyright">
             <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Menu Burger
-        const burger = document.querySelector('.burger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        burger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            burger.classList.toggle('active');
-        });
-        
-        // Filtrage des formations
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const resourceCards = document.querySelectorAll('.resource-card');
-        
-        tabBtns.forEach(btn => {
+        // Fonctionnalité de filtrage
+        document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                // Retirer la classe active de tous les boutons
-                tabBtns.forEach(b => b.classList.remove('active'));
-                // Ajouter la classe active au bouton cliqué
+                // Active/désactive le bouton
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 
-                const category = btn.dataset.category;
+                const filter = btn.dataset.filter;
+                const cards = document.querySelectorAll('.formation-card');
                 
-                // Filtrer les cartes
-                resourceCards.forEach(card => {
-                    if (category === 'all' || card.dataset.category.includes(category)) {
+                cards.forEach(card => {
+                    if (filter === 'all') {
                         card.style.display = 'block';
+                    } else if (filter === 'gratuit' || filter === 'payant') {
+                        if (card.dataset.price === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
                     } else {
-                        card.style.display = 'none';
+                        if (card.dataset.categories.includes(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
                     }
                 });
             });
         });
-        
-        // Bouton contact développeur
-        const devContactBtn = document.getElementById('devContactBtn');
-        const devContactPopup = document.getElementById('devContactPopup');
-        const closePopup = document.getElementById('closePopup');
-        
-        devContactBtn.addEventListener('click', () => {
-            devContactPopup.style.display = 'block';
+
+        // Toggle formulaire de notification
+        document.querySelectorAll('.toggle-notify').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const form = this.nextElementSibling;
+                const isActive = form.classList.contains('active');
+                
+                // Ferme tous les autres formulaires ouverts
+                document.querySelectorAll('.notify-form').forEach(f => {
+                    if (f !== form) f.classList.remove('active');
+                });
+                
+                // Ouvre/ferme le formulaire actuel
+                form.classList.toggle('active', !isActive);
+            });
         });
-        
-        closePopup.addEventListener('click', () => {
-            devContactPopup.style.display = 'none';
+
+        // Envoi des notifications
+        document.querySelectorAll('.notify-submit').forEach(btn => {
+            btn.addEventListener('click', async function() {
+                const form = this.parentElement;
+                const emailInput = form.querySelector('.form-input');
+                const successMsg = form.querySelector('.notification-success');
+                const formationName = emailInput.dataset.formation;
+                const email = emailInput.value;
+                
+                // Validation simple de l'email
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    alert('Veuillez entrer une adresse email valide');
+                    return;
+                }
+                
+                try {
+                    // Enregistrement dans Google Sheets
+                    await saveToGoogleSheets(email, formationName);
+                    
+                    // Affiche le message de succès
+                    successMsg.style.display = 'block';
+                    emailInput.value = '';
+                    
+                    // Masque le formulaire après 3 secondes
+                    setTimeout(() => {
+                        form.classList.remove('active');
+                        successMsg.style.display = 'none';
+                    }, 3000);
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                }
+            });
         });
-        
-        // Fermer le popup en cliquant à l'extérieur
-        window.addEventListener('click', (e) => {
-            if (e.target === devContactPopup) {
-                devContactPopup.style.display = 'none';
+
+        // Envoi de la newsletter
+        document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                alert('Veuillez entrer une adresse email valide');
+                return;
+            }
+            
+            try {
+                await saveToGoogleSheets(email, 'Newsletter');
+                alert('Merci pour votre inscription à notre newsletter !');
+                this.querySelector('.newsletter-input').value = '';
+            } catch (error) {
+                console.error('Erreur:', error);
+                alert('Une erreur est survenue. Veuillez réessayer.');
             }
         });
-        
-        // Animation des cartes au scroll
+
+        // Fonction pour enregistrer dans Google Sheets
+        async function saveToGoogleSheets(email, formationName) {
+            // Remplacez par l'URL de votre Web App Apps Script
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbzQ3d8goa1aofZzL4PbxluxQI5sJeu_dRVROqjO6dNie3ftpZQte5X4XXGM-LyBvgRm/exec';
+            
+            const response = await fetch(scriptUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    formation: formationName,
+                    date: new Date().toLocaleString()
+                }),
+                mode: 'no-cors'
+            });
+            
+            // Note: En mode no-cors, nous ne pouvons pas vérifier la réponse
+            // Dans une vraie application, vous devriez configurer CORS côté Apps Script
+        }
+
+        // Menu burger responsive
+        document.querySelector('.burger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Animation au scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.animation = `fadeIn 0.5s ease-out forwards`;
                 }
             });
         }, { threshold: 0.1 });
-        
-        resourceCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease';
+
+        document.querySelectorAll('.formation-card').forEach(card => {
             observer.observe(card);
         });
     </script>

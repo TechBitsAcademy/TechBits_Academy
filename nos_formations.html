@@ -208,6 +208,7 @@
             opacity: 0;
             animation: fadeIn 0.5s ease-out forwards;
             animation-delay: calc(var(--order) * 0.1s);
+            position: relative;
         }
         
         .formation-card:hover {
@@ -215,10 +216,33 @@
             box-shadow: 0 15px 30px rgba(0, 102, 255, 0.1);
         }
         
+        .formation-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .formation-card:hover .formation-bg-image {
+            opacity: 0.2;
+        }
+        
         .formation-header {
             padding: 1.5rem;
             position: relative;
             border-bottom: 1px solid #eee;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+        
+        .formation-card:hover .formation-header {
+            background-color: rgba(255, 255, 255, 0.9);
         }
         
         .formation-badge {
@@ -230,11 +254,13 @@
             font-weight: 600;
             font-size: 0.8rem;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
         }
         
         .badge-gratuit {
             background: #00cc66;
             color: white;
+            animation: pulse 2s infinite;
         }
         
         .badge-payant {
@@ -251,6 +277,7 @@
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
+            z-index: 2;
         }
         
         .status-disponible {
@@ -313,6 +340,13 @@
         
         .formation-body {
             padding: 0 1.5rem 1.5rem;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+        
+        .formation-card:hover .formation-body {
+            background-color: rgba(255, 255, 255, 0.9);
         }
         
         .formation-description {
@@ -324,6 +358,13 @@
         .formation-footer {
             padding: 1rem 1.5rem;
             border-top: 1px solid #eee;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+        
+        .formation-card:hover .formation-footer {
+            background-color: rgba(255, 255, 255, 0.9);
         }
         
         .btn {
@@ -581,7 +622,6 @@
                 <li><a href="nos_challenges">Nos challenges</a></li>
                 <li><a href="contact.html">contact</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-
             </ul>
             
             <div class="burger">
@@ -653,8 +693,9 @@
                 </div>
             </div>
 
-            <!-- Formation 2 -->
+            <!-- Formation 2 - Exemple avec image de fond -->
             <div class="formation-card" data-categories="payant business" data-status="disponible" data-price="payant" style="--order: 2">
+                <div class="formation-bg-image" style="background-image: url('x3.jpeg')"></div>
                 <div class="formation-header">
                     <span class="formation-badge badge-payant">Payant</span>
                     <span class="formation-status status-disponible">Disponible</span>
@@ -673,8 +714,9 @@
                 </div>
             </div>
 
-            <!-- Formation 3 -->
+            <!-- Formation 3 - Exemple avec image de fond -->
             <div class="formation-card" data-categories="payant business" data-status="disponible" data-price="payant" style="--order: 3">
+                <div class="formation-bg-image" style="background-image: url('x1.jpeg')"></div>
                 <div class="formation-header">
                     <span class="formation-badge badge-payant">Payant</span>
                     <span class="formation-status status-disponible">Disponible</span>
@@ -836,6 +878,7 @@
 
             <!-- Formation 10 -->
             <div class="formation-card" data-categories="payant business" data-status="disponible" data-price="payant" style="--order: 10">
+                <div class="formation-bg-image" style="background-image: url('x2.jpeg')"></div>
                 <div class="formation-header">
                     <span class="formation-badge badge-payant">Payant</span>
                     <span class="formation-status status-disponible">Disponible</span>

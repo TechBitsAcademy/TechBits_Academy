@@ -497,7 +497,33 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
         }
+        .badge-premium {
+            background: #0066ff;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
         
+        .formation-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .price-premium {
+            color: white;
+        }
+        
+        .price-old {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 0.5rem;
+            position: absolute;
+            top: -15px;
+            left: -60px;
+        }
         .cta-section::after {
             content: '';
             position: absolute;
@@ -724,11 +750,12 @@
             
             <ul class="nav-links">
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="ressources.html">Formations</a></li>
+                <li><a href="nos_formations.html">Formations</a></li>
                 <li><a href="temoignages.html">Témoignages</a></li>
-                <li><a href="contact.html">Contact</a></li>
                 <li><a href="nos_challenges">Nos challenges</a></li>
                 <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
             </ul>
             
             <div class="burger">
@@ -739,13 +766,16 @@
 
     <!-- Formation Hero -->
     <section class="formation-hero">
-        <div class="formation-badge badge-free">Formation Gratuite</div>
-        
+        <div class="formation-badge badge-premium">Formation Premium</div>        
         <h1>T'as une idée ? Transforme ça en business béton</h1>
         <p>Passe de l'idée à l'action en 7 jours avec notre méthode simple et compatible avec tous les projets (jeux vidéo, élevage, digital, commerce...)</p>
         
+        <div class="formation-price price-premium">
+            <span class="price-old">4.700 FCFA</span>
+            1.800 FCFA
+        </div>
         <div class="hero-buttons">
-            <a href="#" class="btn btn-primary">
+            <a href="pg_methode_paie_business_autour.html" class="btn btn-primary">
                 <i class="fas fa-download"></i> Télécharger le guide
             </a>
             
@@ -830,23 +860,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Section Formateur -->
-                <div class="formation-section">
-                    <h2>Votre formateur</h2>
-                    <div style="display: flex; align-items: center; gap: 2rem; background: #f0f9ff; padding: 2rem; border-radius: 12px;">
-                        <div style="width: 100px; height: 100px; background: #0066ff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold;">TB</div>
-                        <div>
-                            <h4 style="color: #0066ff; font-size: 1.4rem; margin-bottom: 0.5rem;">TechBits Team</h4>
-                            <p style="margin-bottom: 1rem;">Nous aidons les entrepreneurs africains à concrétiser leurs idées avec des méthodes adaptées au contexte local. Notre communauté compte déjà plus de 10 000 membres actifs.</p>
-                            <div style="display: flex; gap: 1rem;">
-                                <a href="#" style="color: #0066ff;"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" style="color: #0066ff;"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#" style="color: #0066ff;"><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <div class="formation-sidebar">
@@ -854,8 +867,8 @@
                 <div class="sidebar-card">
                     <h3>Obtenir la formation</h3>
                     <p>Recevez immédiatement le guide complet PDF + les fiches d'exercices pratiques.</p>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">
-                        <i class="fas fa-download"></i> Télécharger gratuitement
+                    <a href="pg_methode_paie_business_autour.html" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                        <i class="fas fa-download"></i> Télécharger 
                     </a>
                 </div>
                 
@@ -877,10 +890,10 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <span>5/5 (87 avis)</span>
+                        <span>5/5 (19 avis)</span>
                     </div>
                     <p>"Grâce à la méthode KOS, j'ai lancé mon élevage de poulets avec seulement 50 000 FCFA. 3 mois après, je gagne 150 000 FCFA/mois !"</p>
-                    <a href="#testimonials" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">
+                    <a href="temoignages.html" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">
                         Voir les réussites
                     </a>
                 </div>
@@ -958,7 +971,6 @@
                 </div>
                 <p class="testimonial-content">"J'ai commencé avec 5 poulets dans ma cour. Aujourd'hui j'en ai 200 et je fournis 3 restaurants du quartier. La méthode 'démarrer petit' m'a évité de tout perdre au début."</p>
                 <div class="testimonial-author">
-                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Koffi">
                     <span>Koffi A., Éleveur</span>
                 </div>
             </div>
@@ -973,7 +985,6 @@
                 </div>
                 <p class="testimonial-content">"Grâce au plan 7 jours, j'ai testé mon service de réparation de téléphones en proposant des diagnostics gratuits. En 1 mois, j'avais assez de clients pour quitter mon job !"</p>
                 <div class="testimonial-author">
-                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Amina">
                     <span>Amina D., Réparatrice</span>
                 </div>
             </div>
@@ -988,7 +999,6 @@
                 </div>
                 <p class="testimonial-content">"J'hésitais entre 3 idées. Le carnet d'actions m'a aidé à choisir la plus simple (vente de chips maison) et maintenant je veux ouvrir un snack !"</p>
                 <div class="testimonial-author">
-                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Jean">
                     <span>Jean T., Entrepreneur</span>
                 </div>
             </div>
@@ -1004,7 +1014,7 @@
         <div class="cta-content">
             <h2>Prêt à transformer votre idée en business ?</h2>
             <p>Recevez gratuitement le guide complet et commencez dès aujourd'hui, peu importe votre idée ou votre budget.</p>
-            <a href="#" class="btn btn-primary" style="margin-top: 1.5rem;">
+            <a href="pg_methode_paie_business_autour.html" class="btn btn-primary" style="margin-top: 1.5rem;">
                 <i class="fas fa-download"></i> Télécharger maintenant
             </a>
         </div>

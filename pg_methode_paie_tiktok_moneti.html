@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méthodes de Paiement - TechBits Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==== BASE STYLES ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ==== ANIMATIONS ==== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.5); }
+        }
+        
+        /* ==== HEADER STYLES ==== */
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #00ffcc;
+        }
+        
+        /* ==== HERO SECTION ==== */
+        .hero-paiement {
+            background: linear-gradient(rgba(0, 102, 255, 0.9), rgba(0, 162, 255, 0.9)), url('https://images.unsplash.com/photo-1611162616475-46592b321512?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .hero-paiement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 204, 0.2) 0%, transparent 30%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-paiement h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-paiement p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        /* ==== PAYMENT SECTION ==== */
+        .payment-section {
+            padding: 4rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #0066ff;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: #00ffcc;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
+        }
+        
+        .payment-header {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .payment-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .payment-body {
+            padding: 2rem;
+        }
+        
+        .payment-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-details p {
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+        
+        .payment-info {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-info strong {
+            color: #0066ff;
+        }
+        
+        .btn-payment {
+            display: inline-block;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            margin-top: 1rem;
+        }
+        
+        .btn-mobile-money {
+            background: linear-gradient(135deg, #00ff9d 10%, #0066ff 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.2);
+            animation: both;
+        }
+        
+        .btn-crypto {
+            background: linear-gradient(135deg, #00ffcc 0%, #00a2ff 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 255, 204, 0.2);
+        }
+        
+        .btn-payment:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+        }
+        
+        .price-box {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.1);
+            animation: glow 2s infinite;
+        }
+        
+        .formation-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .price-premium {
+            color: #0066ff;
+        }
+        
+        .price-old {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 0.5rem;
+        }
+        
+        /* ==== FOOTER ==== */
+        footer {
+            background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00ffcc;
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #00ffcc;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #00ffcc;
+            color: #0066ff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ==== FLOATING BUTTONS ==== */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 99;
+        }
+
+        .whatsapp-float {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+            background-color: #25D366;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            animation: none;
+        }
+
+        .tooltip {
+            position: absolute;
+            right: 70px;
+            background: #333;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .whatsapp-float:hover .tooltip {
+            opacity: 1;
+        }
+        
+        /* ==== RESPONSIVE ==== */
+        @media screen and (max-width: 768px) {
+            .hero-paiement h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .formation-price {
+                font-size: 1.5rem;
+            }
+            
+            .price-old {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TechBits Academy</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-paiement">
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fas fa-lock"></i> Paiement Sécurisé
+            </div>
+            <h1>Finalisez Votre Achat</h1>
+            <p>Choisissez votre méthode de paiement préférée pour accéder immédiatement à la formation</p>
+            
+            <div class="price-box">
+                <h3>Formation TikTok Money Machine</h3>
+                <div class="formation-price price-premium">
+                    <span class="price-old">11.850 FCFA</span>
+                    3.400 FCFA/5,46$
+                </div>
+                <p style="color: #00a2ff;">Accès immédiat et à vie</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <h2 class="section-title">Méthodes de Paiement</h2>
+        
+        <div class="payment-methods">
+            <!-- Mobile Money Card -->
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="payment-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="payment-title">Mobile Money</h3>
+                </div>
+                
+                <div class="payment-body">
+                    <div class="payment-details">
+                        <p><i class="fas fa-check-circle" style="color: #00ffcc;"></i> Paiement instantané</p>
+                        <p><i class="fas fa-check-circle" style="color: #00ffcc;"></i> Supporté dans toute l'Afrique</p>
+                        <p><i class="fas fa-check-circle" style="color: #00ffcc;"></i> Reçu immédiat après paiement</p>
+                    </div>
+                    
+                    
+                    <button class="btn-payment">
+                        <a href="https://rocghhhf.mychariow.com/prd_un70mj/checkout" class="btn-payment btn-mobile-money"><i>Payer avec mobile money</i></a> 
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Crypto Card -->
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="payment-icon">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <h3 class="payment-title">Crypto-monnaie</h3>
+                </div>
+                
+                <div class="payment-body">
+                    <div class="payment-details">
+                        <p><i class="fas fa-check-circle" style="color: #00ffcc;"></i> Paiement anonyme</p>
+                        <p><i class="fas fa-check-circle" style="color: #00ffcc;"></i> Transactions sécurisées</p>
+                        <p><i class="fas fa-check-circle" style="color: #00ffcc;"></i> Support mondial</p>
+                    </div>
+                    
+                    <button class="btn-payment btn-crypto">
+                        <i class="fas fa-wallet"></i> Payer avec Crypto
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <p><i class="fas fa-lock" style="color: #00ffcc;"></i> Paiements 100% sécurisés | <i class="fas fa-headset" style="color: #00ffcc;"></i> Support 24h/24</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TechBits Academy</h3>
+                <p>Spécialistes en monétisation des réseaux sociaux.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61559191328806"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Formations</h3>
+                <ul>
+                    <li><a href="pg_tiktok_monetise.html">TikTok Monétisation</a></li>
+                    <li><a href="#">Growth TikTok</a></li>
+                    <li><a href="#">Création de Contenu</a></li>
+                    <li><a href="#">Programmes Premium</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="faq.html">Questions fréquentes</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                    <li><a href="#">Politique de remboursement</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 TechBits Academy. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Button -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/2290156410172" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="tooltip">Besoin d'aide ? Contactez-nous</span>
+        </a>
+    </div>
+</body>
+</html>

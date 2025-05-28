@@ -281,6 +281,49 @@
             margin-right: 0.5rem;
         }
         
+        /* ==== COUNTDOWN TIMER ==== */
+        .countdown-timer {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .countdown-title {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .countdown-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 0.8rem;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 50px;
+        }
+        
+        .countdown-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .countdown-label {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+        
         /* ==== FOOTER ==== */
         footer {
             background: linear-gradient(135deg, #0066ff 0%, #00a2ff 100%);
@@ -434,6 +477,19 @@
             .price-old {
                 font-size: 1rem;
             }
+            
+            .countdown-box {
+                padding: 0.3rem 0.5rem;
+                min-width: 40px;
+            }
+            
+            .countdown-value {
+                font-size: 1.2rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.6rem;
+            }
         }
     </style>
 </head>
@@ -460,10 +516,29 @@
             <div class="price-box">
                 <h3>Formation TikTok Money Machine</h3>
                 <div class="formation-price price-premium">
-                    <span class="price-old">11.850 FCFA</span>
-                    3.400 FCFA/5,46$
+                    <span class="price-old">7.200 FCFA</span>
+                    2.400 FCFA/4$
                 </div>
                 <p style="color: #00a2ff;">Accès immédiat et à vie</p>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown-timer">
+                    <div class="countdown-title">Offre spéciale expire dans:</div>
+                    <div class="countdown-container">
+                        <div class="countdown-box">
+                            <div class="countdown-value" id="hours">16</div>
+                            <div class="countdown-label">Heures</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-value" id="minutes">00</div>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-value" id="seconds">00</div>
+                            <div class="countdown-label">Secondes</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -490,9 +565,9 @@
                     </div>
                     
                     
-                    <button class="btn-payment">
-                        <a href="https://rocghhhf.mychariow.com/prd_un70mj/checkout" class="btn-payment btn-mobile-money"><i>Payer avec mobile money</i></a> 
-                    </button>
+                    
+                        <a href="https://rocghhhf.mychariow.com/prd_un70mj/checkout"><button class="btn-payment btn-mobile-money"><i>Payer avec mobile money</i> 
+                    </button></a>
                 </div>
             </div>
             
@@ -569,5 +644,89 @@
             <span class="tooltip">Besoin d'aide ? Contactez-nous</span>
         </a>
     </div>
+
+    <script>
+        // Compte à rebours de 16 heures
+        function startCountdown() {
+            let hours = 16;
+            let minutes = 0;
+            let seconds = 0;
+            
+            const countdown = setInterval(function() {
+                // Mettre à jour l'affichage
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                // Décrémenter le temps
+                if (seconds > 0) {
+                    seconds--;
+                } else {
+                    if (minutes > 0) {
+                        minutes--;
+                        seconds = 59;
+                    } else {
+                        if (hours > 0) {
+                            hours--;
+                            minutes = 59;
+                            seconds = 59;
+                        } else {
+                            // Le compte à rebours est terminé
+                            clearInterval(countdown);
+                            document.querySelector('.countdown-title').textContent = "Offre spéciale expirée!";
+                            document.querySelector('.countdown-container').style.display = 'none';
+                        }
+                    }
+                }
+            }, 1000);
+        }
+        
+        // Démarrer le compte à rebours quand la page est chargée
+        window.onload = startCountdown;
+    </script>
+    <script>
+        const countdownHours = document.getElementById("hours");
+        const countdownMinutes = document.getElementById("minutes");
+        const countdownSeconds = document.getElementById("seconds");
+    
+        function startCountdown(endTime) {
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+    
+                if (distance <= 0) {
+                    countdownHours.textContent = "00";
+                    countdownMinutes.textContent = "00";
+                    countdownSeconds.textContent = "00";
+                    clearInterval(interval);
+                    return;
+                }
+    
+                const hours = Math.floor((distance / (1000 * 60 * 60)));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+                countdownHours.textContent = String(hours).padStart(2, '0');
+                countdownMinutes.textContent = String(minutes).padStart(2, '0');
+                countdownSeconds.textContent = String(seconds).padStart(2, '0');
+            }
+    
+            updateCountdown(); // Call once immediately
+            const interval = setInterval(updateCountdown, 1000);
+        }
+    
+        // Vérifie s'il y a déjà une date de fin stockée
+        let countdownEnd = localStorage.getItem("countdownEnd");
+    
+        if (!countdownEnd) {
+            // Ajoute 16 heures à la date actuelle
+            const newEndTime = new Date().getTime() + (16 * 60 * 60 * 1000);
+            localStorage.setItem("countdownEnd", newEndTime);
+            countdownEnd = newEndTime;
+        }
+    
+        startCountdown(Number(countdownEnd));
+    </script>
+    
 </body>
 </html>
